@@ -1,0 +1,1619 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=2.8cm]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=blue,urlcolor=blue}
+\emergencystretch=2em
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\RP}{\mathbb{RP}}
+\newcommand{\PGL}{\mathrm{PGL}}
+\newcommand{\rk}{\operatorname{rank}}
+\newcommand{\tr}{\operatorname{tr}}
+\title{Reflective projective billiards in higher dimensions:\\
+monodromy, threshold phenomena, and explicit polytopes}
+\author{Jorge Lucas Gonz\'alez\thanks{Email: jorge.lucas.glez@gmail.com}\\
+\small Independent researcher}
+\date{August 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We develop a linear and algebro-geometric framework for reflective projective
+billiards in projective dimension at least three.  Scalar products of harmonic
+homologies lead to a parity obstruction, a sharp general lower bound for the
+period, and a trichotomy between the rigid end, the threshold, and the stable
+range.  We construct bounded rational polytopes with primitive open families of
+periodic trajectories in dimensions three through six, analyze the invariant
+quadrics and reflection groups of the examples, and reduce the threshold problem
+in projective three-space to an explicit irreducibility question.  We also isolate
+the determinantal equation behind the rank-three threshold argument and explain
+exactly why it becomes vacuous in vector rank four.
+\end{abstract}
+
+\noindent\textbf{Keywords.} Projective billiards; harmonic homologies; reflection
+groups; character varieties; periodic trajectories; convex polytopes.
+
+\medskip
+\noindent\textbf{2020 Mathematics Subject Classification.}
+37C83, 51N15, 20F55, 14M12.
+
+\section{Introduction}
+Reflective projective billiards turn a dynamical closing condition into a
+factorisation problem in \(\PGL_{n+1}\).  This paper studies the dimension-dependent
+consequences of that observation.  The main themes are the number of equations in
+the scalar-product locus, determinant parity, the rank of partial products, and
+the geometry needed to convert a word of involutions into a bounded polytope with
+a strict itinerary.
+
+A projective billiard is \emph{$k$-reflective} when its billiard map has an open
+set of $k$-periodic points; the first examples, of period three and of every even
+period at least four, are due to Fierobe \cite{fie-ex}, and Problem~1 of
+\cite{opb} asks which further periods occur.
+Fierobe's higher-dimensional non-existence theorem for triangular families and
+his subsequent analysis of caustics provide complementary background for the
+higher-dimensional setting \cite{fie-tri,fie-caustics}.
+The definitions and openness criterion are recalled below, and every construction
+and auxiliary result used in the higher-dimensional arguments is proved here.
+For related projective factorisation results, including products of three harmonic
+homologies, see \cite{heidari-honari}.
+
+The main contributions of this paper are: a dimension-dependent parity and rank
+framework for scalar monodromy; explicit bounded rational polytopes with
+primitive open families in dimensions three through six; exact analyses of their
+invariant quadrics and reflection groups; and a reduction of the threshold
+question in projective three-space to an explicit irreducibility problem.  The
+irreducibility of $V_6$ and the resulting threshold theorem are kept explicitly
+open where the proof does not close.
+\section{Setting}\label{sec:setting}
+
+A \emph{projective billiard} \cite{tab} is a bounded convex polytope
+$\Omega\subset\mathbb{R}^n$ together with a \emph{transversal line field}
+assigning to each point in the relative interior of a facet of $\partial\Omega$
+a line $L(p)$ through $p$ not contained in the facet hyperplane; reflection is
+defined by requiring the incoming ray, the outgoing ray, the facet tangent and
+$L(p)$ to have cross ratio $-1$ in their impact pencil.
+
+Throughout this paper we restrict to \emph{central facet fields}: on each
+facet the transversal lines belong to the pencil through one fixed projective
+centre outside the supporting hyperplane. No reduction from arbitrary
+transversal fields to this class is asserted. Statements about the period
+spectrum use the stated convention on the facets visited by the witness.
+
+\begin{definition}[Fierobe \cite{fie-ex}]\label{def:krefl}
+$\Omega$ is \emph{$k$-reflective} if there are a $k$-periodic orbit
+$(p_1,\dots,p_k)$ and an \textbf{open} $U_1\times U_2\subset(\partial\Omega)^2$
+containing $(p_1,p_2)$ every point of which begins a $k$-periodic orbit.
+\end{definition}
+
+The open set is the whole content of the definition, and it is where the difficulty
+lives: exhibiting one periodic orbit is easy, exhibiting an open family of initial
+impact pairs is not.
+
+\subsection{Reflection as a harmonic homology}
+
+For a covector $L$ and a vector $O$ with $LO\neq0$ put $H=I-2\,OL/(LO)$. Then
+$H^2=I$, $HO=-O$, $Hx=x$ for $Lx=0$, and $\det H=-1$.
+
+\begin{proposition}\label{prop:law}
+Let $p$ lie on $L$, let $\tau\in\ker L\setminus\{0\}$ be a tangent direction, and
+put $\nu=O-p$. The involution induced by $H$
+on the pencil at $p$ sends $a\tau+b\nu$ to $a\tau-b\nu$; hence the cross ratio of
+(incoming, outgoing; tangent, transversal) is $-1$. So reflection in the side with
+transversal field the pencil through $O$ \emph{is} the harmonic homology with axis
+the facet hyperplane and centre $O$.
+\end{proposition}
+
+\begin{proof}
+$H$ fixes $p$ and is an involution, so induces an involution of the pencil at $p$
+fixing the two distinct lines $\mathbb{R}\tau$ and $pO$; in the coordinate taking them to $0$
+and $\infty$ it is $m\mapsto-m$. Parametrising by $(a:b)$ with direction
+$a\tau+b\nu$, the tangent is $(1:0)$, the transversal $(0:1)$, and with
+$[ij]=a_ib_j-a_jb_i$ the cross ratio of $(a:b),(a:-b),(1:0),(0:1)$ is
+$[13][24]/([14][23])=-1$.
+\end{proof}
+
+Consequently, if $H_{j_k}\cdots H_{j_1}$ is scalar then \emph{every} line returns to
+itself after the corresponding $k$ reflections. The converse is false: an isolated
+trajectory may well close without the product being scalar, and it is precisely the
+scalar case that produces an \emph{open set} of closed trajectories, which is what
+Definition~\ref{def:krefl} demands. If the product is $cI$, determinants give
+$c^{n+1}=(-1)^k$. For odd projective dimension $n$, the left side is positive,
+so $k$ must be even. For even $n$, the real scalar is $c=(-1)^k$ and
+determinants give no additional obstruction.
+For the central fields considered here, an open family also forces scalar
+monodromy. The initial lines of a regular family form an open subset of the
+Grassmannian of projective lines. Their invariance under the fixed product
+is an algebraic incidence condition; vanishing on an open subset forces
+it on the entire Grassmannian. A linear map preserving every two-dimensional
+vector subspace preserves every one-dimensional subspace, obtained as an
+intersection of such subspaces in vector dimension at least three.
+Applying this to basis vectors and their pairwise sums shows that the map
+is scalar. This necessity concerns an open family; an isolated closed orbit
+does not suffice.
+
+\section{An openness criterion}
+
+Everything below rests on this; it assumes no symmetry.
+
+\begin{lemma}[Exit map]\label{lem:exit}
+Let $\Omega$ be a convex polytope, $p$ in the relative interior of a facet, $w$ pointing into
+$\Omega$. The ray $p+sw$, $s>0$, meets $\partial\Omega$ in exactly one point $E(p,w)$, and
+$E$ is continuous wherever $E(p,w)$ lies in the relative interior of a facet.
+\end{lemma}
+
+\begin{proof}
+$\Omega$ is convex and bounded, so $s^\ast=\sup\{s>0:p+sw\in\Omega\}$ is finite and
+$E(p,w)=p+s^\ast w\in\partial\Omega$; uniqueness is convexity. If $E(p,w)$ is
+in the relative interior of a facet $F$ then $w$ is not parallel to its
+supporting hyperplane, so the intersection determinant is nonzero and Cramer's
+rule gives $s^\ast$ near $(p,w)$ as a quotient of polynomials with nonvanishing
+denominator. Since the relative interior of $F$ is open in $\partial\Omega$,
+nearby data still exit through $F$.
+\end{proof}
+
+\begin{remark}
+Requiring nonzero intersection determinants with every supporting hyperplane is unnecessarily restrictive: a strict trajectory may be parallel to facets it never reaches. Continuity only requires transversality at the actual exit facet, together with persistence of the strict inequalities for the other facets.
+\end{remark}
+
+\begin{theorem}[Openness criterion]\label{thm:open}
+Let $\Omega$ be a convex polytope with facets $F_0,\dots,F_{k-1}$ and transversal
+field on $F_i$ the pencil through $O_i$, with $L_iO_i\neq0$. Assume
+\textup{(H1)} $H_{k-1}\cdots H_0=cI$, $c\neq0$; \textup{(H2)} there is an orbit
+with itinerary $0,1,\dots,k-1$ whose impacts are strictly interior to their facets,
+with strictly positive step parameters, each losing facet excluded by a strict
+inequality and nonvanishing transversality at each impact; \textup{(H3)} the return
+direction is $u_k=\kappa u_0$ with $\kappa>0$. Then $\Omega$ is $k$-reflective; if
+the $k$ impacts lie on distinct facets the period is primitive.
+\end{theorem}
+
+\begin{proof}
+Each step is a line--line intersection followed by a reflection, so the impact
+parameters and directions are rational functions of the initial data, with
+denominators nonvanishing at the witness by (H2); the vanishing locus being closed,
+they are defined and continuous nearby. The finitely many strict inequalities of
+(H2) persist, and by Lemma~\ref{lem:exit} each of the $k$ exit maps is continuous
+with value in the relative interior of a facet, which is open in $\partial\Omega$; composing,
+the itinerary is unchanged for nearby data. By (H1) the product is the identity of
+$\PGL_{n+1}$, so \emph{every} line returns to itself: $\ell_k=\ell_0$ as an unoriented
+line, and since $\ell_0$ is not the supporting hyperplane of $F_0$ the intersection
+$\ell_0\cap F_0$ is a single point, whence $p_k=p_0$. For the orientation, (H1)
+only gives $u_k=\kappa u_0$ with $\kappa$ real nonzero --- neither $\pm1$ nor a
+priori locally constant --- but $\kappa=(u_k\cdot u_0)/(u_0\cdot u_0)$ is
+continuous and nonvanishing and equals a positive number at the witness by (H3), so
+$\kappa>0$ on a smaller neighbourhood. Finally, a proper period $d\mid k$, $0<d<k$,
+would force $p_d=p_0$; but $p_d$ lies on facet $F_d$ and $p_0$ on $F_0$, which are
+distinct facets, and the impacts are interior to them, so $p_d\neq p_0$.
+\end{proof}
+
+Hypotheses (H2)--(H3) are finitely many strict inequalities and (H1) one identity,
+so they can be certified exactly for explicit data. We use this repeatedly
+below.
+\section{Higher dimensions}\label{sec:higher}
+
+Nothing in the definitions or openness argument used $n=2$: a harmonic
+homology of $\mathbb{RP}^n$ is $H=I-2OL/(LO)$ with $L$ a hyperplane covector, the
+reflection law of Proposition~\ref{prop:law} is the same harmonic condition in the
+pencil of lines at the impact point inside the $2$-plane spanned by the ray and the
+transversal, and the openness criterion of Theorem~\ref{thm:open} goes through
+verbatim for a convex polytope of $\mathbb{R}^n$ with impacts interior to facets:
+its proof uses only convexity, Cramer's rule and finitely many strict
+inequalities. What changes are the numbers, and they change in a way that explains
+$k=4,5,6$ as one law.
+
+\subsection{The four counts, and a trichotomy}
+
+Write $N=\dim\PGL_{n+1}=(n+1)^2-1$. A harmonic homology of $\mathbb{RP}^n$ is a pair
+$(L,O)$ with $LO\neq0$ modulo two scalings, so $\dim\mathrm{Inv}=2(n+1)-2=2n$.
+At a point where the corresponding Jacobian ranks are maximal and the indicated
+stabiliser is trivial, a direct dimension count gives:
+\[
+  \dim V_k=2nk-N,\qquad
+  \dim(\text{moduli})=2nk-2N=2n(k-n-2),\qquad
+  \dim S_k=nk+n .
+\]
+For the expected local value of $\dim S_k$: the space of quadrics of $\mathbb{RP}^n$ has dimension
+$\binom{n+2}2-1$, each mirror is one $n_i\in\mathbb{RP}^n$, and the closure
+condition is at most $\dim\mathrm{O}(Q)=n(n+1)/2$ conditions, so
+$\dim S_k=\bigl[\binom{n+2}2-1\bigr]+nk-\frac{n(n+1)}2=nk+n$.
+
+\begin{proposition}[Trichotomy of the expected counts]\label{prop:trichotomy}
+Under the maximal-rank and stabiliser hypotheses just stated, the expected moduli
+dimension is $0$ if and only if $k=n+2$, and the expected dimensions of $S_k$ and
+$V_k$ agree if and only if $k=n+3$; for $k\ge n+4$, the expected dimension of
+$S_k$ is smaller. These are the rigid, threshold, and dimension-deficient regimes,
+respectively.
+\end{proposition}
+
+\begin{proof}
+$2n(k-n-2)=0\iff k=n+2$. And $2nk-N=nk+n\iff nk=N+n=n^2+3n\iff k=n+3$; the
+inequality for larger $k$ follows since the left side grows twice as fast.
+\end{proof}
+
+\subsection{Where the counts are valid, and by how much they fail}
+
+The counts above are stated at points where the relevant Jacobian has maximal rank.
+That hypothesis is not automatic, and it fails at three of the examples of these
+notes. The following two statements say exactly when, and by exactly how much.
+
+Write $\Phi$ for the map sending a $k$-tuple of harmonic homologies to its product in
+$\PGL_m$, so that $V_k=\Phi^{-1}(\mathrm{id})$, and let $A_j=H_{k-1}\cdots H_{j+1}$
+and $H'_j=A_jH_jA_j^{-1}$ be the \emph{unfolded} mirrors, with normals $a_j=A_jn_j$.
+
+\begin{proposition}[The cokernel]\label{prop:cokernel}
+Under the trace pairing,
+\[
+  \operatorname{coker}d\Phi\;\cong\;\{Y\in\mathfrak{sl}_m:\ [Y,H'_j]=0\ \text{for all }j\},
+\]
+the traceless part of the commutant of the group generated by the unfolded mirrors.
+If moreover the mirrors are orthogonal for a positive definite form $Q$
+and the $a_j$ span $\mathbb{R}^m$, then in coordinates with $Q=I$ this is
+$\{S\ \text{symmetric traceless}:\ Sa_j\parallel a_j\ \forall j\}$, the space of
+quadratic forms the configuration preserves beyond the given one.
+\end{proposition}
+
+\begin{proof}
+Differentiating $H^2=I$ gives $\delta H\,H+H\,\delta H=0$, so $X=\delta H\,H$
+satisfies $HXH=-X$; the space $W_H=\{X:HXH=-X\}$ is the $-1$ eigenspace of the
+involution $\mathrm{Ad}_H$, of dimension $2(m-1)$, which is the number of parameters
+of a harmonic homology, and $X\mapsto XH$ is bijective, so the tangent space maps
+onto $W_H$. Varying only $H_j$,
+$\delta P\cdot P^{-1}=A_j(\delta H_j H_j)A_j^{-1}=W_{H'_j}$, whence
+$\operatorname{im}d\Phi=\sum_jW_{H'_j}$. Now $\mathrm{Ad}_{H'}$ is self-adjoint for
+the trace form, so $W_{H'}^{\perp}$ is its $+1$ eigenspace, the centraliser of $H'$;
+and the dual of $\mathfrak{pgl}_m$ under that pairing is $\mathfrak{sl}_m$. For the
+last sentence, $[Y,I-2aa^{\top}/|a|^2]=0$ forces $Ya=\lambda a$ and
+$Y^{\top}a=\lambda a$; splitting $Y$ into symmetric and antisymmetric parts and
+subtracting gives $Ka=0$ for the antisymmetric part, hence $K=0$ when the $a_j$ span.
+\end{proof}
+
+\begin{proposition}[The corank is the number of blocks, minus one]\label{prop:corank}
+Suppose the mirrors are orthogonal for a positive definite form, their
+normals span $\mathbb R^m$, and their representation decomposes into $s$
+pairwise non-isomorphic irreducible summands. Then $d\Phi$ has corank $s-1$,
+and the tangent space to the scalar-product equations has dimension
+\[
+  \dim\ker d\Phi=2kn-\bigl((n+1)^2-1\bigr)+(s-1).
+\]
+For $s=1$ the map is a submersion and this is also the local dimension of
+$V_k$. For $s>1$ it is only a tangent-space calculation; higher-order
+equations may decrease the local dimension.
+\end{proposition}
+
+\begin{proof}
+The unfolded mirrors generate the same group as the original ones, since
+$H'_{k-1}=H_{k-1}$ and each $H_j$ is recovered inductively from the $H'$. By
+Proposition~\ref{prop:cokernel} the cokernel is the traceless part of the commutant.
+By the positive definite and spanning hypotheses in
+Proposition~\ref{prop:cokernel}, every commuting endomorphism is symmetric.
+The eigenspaces of a symmetric commuting endomorphism are invariant, so on
+each irreducible block it is scalar. There are no off-diagonal intertwiners
+between non-isomorphic blocks. The commutant therefore has dimension $s$,
+and its traceless part has dimension $s-1$. Rank--nullity gives the formula;
+the submersion theorem applies when $s=1$.
+\end{proof}
+
+\begin{proposition}[A quadratic obstruction at the rank-five example]
+\label{prop:quadratic-corank}
+At the configuration of Theorem~\ref{thm:rp4b5}, the tangent space to the
+scalar-product equations has dimension $33$, whereas the complex local
+dimension is $32$. The real local dimension is at most $32$.
+\end{proposition}
+
+\begin{proof}
+Use independent affine coordinates for the seven poles $p_i$ and axes $l_i$,
+fixing the first nonzero coordinate of each at its value in the displayed
+root $n_i$. There are $7\cdot8=56$ coordinates. For
+$H_i=I-2p_il_i/(l_ip_i)$ and $P=H_6\cdots H_0$, exact differentiation at
+$p_i=n_i$, $l_i=n_i^\top$ gives $P=-I$ and $\operatorname{rank}dP=23$.
+The matrix $Y=\operatorname{diag}(1,1,1,-4,1)$ commutes with every mirror,
+and $\operatorname{tr}(Y\,dP)=0$ for all $56$ coordinate directions.
+
+Here is an explicit tangent direction, with indices starting at zero; all
+unlisted coordinate derivatives are zero:
+\[
+\begin{array}{c|rrrrrrr}
+\text{coordinate}&p_{0,3}&l_{0,3}&l_{1,3}&p_{2,1}&p_{2,4}&l_{2,1}&l_{2,2}\\
+\hline
+\text{derivative}&2&2&2&-1&1&-1&1
+\end{array}
+\]
+Along the straight coordinate path $tv$, rational multiplication gives
+\[
+ P'(0)=0,\qquad
+ \operatorname{tr}(Y(P(t)+I))
+ =\frac{2t^2(18t^2-5)}{(t^2+1)(2t^2+1)}=-10t^2+O(t^4).
+\]
+The supplement's verifier \texttt{check\_corank\_obstruction.py}
+reproduces these identities and the rank in exact arithmetic.
+
+Eliminate $23$ independent equations by the analytic implicit function
+theorem. Their zero set is smooth of dimension $33$ and has tangent space
+$\ker dP$. A curve in that set with initial derivative $v$ may change the
+second derivative of $P$ by an element of $\operatorname{im}dP$ only.
+Pairing with $Y$ annihilates that change. Thus the remaining scalar equation
+has a nonzero quadratic term, and the local zero set has dimension at most
+$32$. Finally $P$ takes values in the smooth determinant-$-1$ hypersurface
+of dimension $24$, so its fibre is locally defined by $24$ equations in
+$56$ variables. The complex Krull bound is at least $32$ on every component.
+The complex local dimension is consequently exactly $32$.
+\end{proof}
+
+\begin{remark}[Which of our examples are which]\label{rem:whichblocks}
+Of the five higher-dimensional configurations certified in this paper, two are
+irreducible and three are not; the split is exactly the one predicted by
+Theorem~\ref{thm:bmstops}: the
+reducible ones are precisely the words of $B_m$ with isolated coordinates.
+\[
+\begin{array}{lccc}
+\text{configuration} & s & \text{corank} & \text{counts valid?}\\\hline
+\mathbb{R}^3,\ k=6\text{ (Thm.~\ref{thm:rp3example})} & 1 & 0 & \text{yes}\\
+\mathbb{R}^3,\ k=6\text{ (Thm.~\ref{thm:rp3d4})} & 1 & 0 & \text{yes}\\
+\mathbb{R}^4,\ k=7\text{ (Thm.~\ref{thm:rp4b5})} & 2 & 1 & \text{no}\\
+\mathbb{R}^5,\ k=8\text{ (Thm.~\ref{thm:rp5b6})} & 3 & 2 & \text{no}\\
+\mathbb{R}^6,\ k=9\text{ (Thm.~\ref{thm:rp6b7})} & 4 & 3 & \text{no}
+\end{array}
+\]
+The block structure is the same in the last three: one $D_4$ block of rank four, plus
+one line for each isolated coordinate. The three lines carry pairwise different
+characters of the group --- on each, one generator acts by $-1$ and the others
+trivially --- so they are non-isomorphic and
+Proposition~\ref{prop:corank} applies. Checked over $\mathbb{Q}$ by
+\path{verificadores/bloques.py} and \path{verificadores/tolerancias.py}.
+
+None of this disturbs the examples themselves: they are certified by the openness
+criterion, which uses no dimension count. What it disturbs is the right to apply the
+counts, and Proposition~\ref{prop:trichotomy} with them, at those points.
+\end{remark}
+
+\subsection{Parity: the obstruction reverses}
+
+When $n$ is even, $-I$ is a scalar in odd vector rank, so odd $k$ carries no
+determinant obstruction. In odd projective dimensions the parity restriction is
+different, as the theorem shows.
+
+\begin{theorem}[Parity]\label{thm:parity}
+A harmonic homology of $\mathbb{RP}^n$ has a canonical lift
+$H=I-2OL/(LO)$, which fixes its axis pointwise and satisfies $H^2=I$ and
+$\det H=-1$. When $n+1$ is even, this determinant is independent of the
+choice between the two involutive lifts $H$ and $-H$. If the canonical lifts satisfy
+$H_{k-1}\cdots H_0=cI$ then
+\[
+  c^{\,n+1}=(-1)^k .
+\]
+Hence for $n$ even there is no parity constraint on $k$ --- which is why $\mathbb{RP}^2$ admits
+odd $k$ --- while for \textbf{$n$ odd, $k$ must be even}. In particular in
+$\mathbb{RP}^3$ there is no $k$-reflective projective billiard with $k$ odd; the
+rigid case $k=n+2=5$ is \emph{empty}, not merely degenerate.
+\end{theorem}
+
+\begin{proof}
+Take determinants. For $n+1$ even, $\det(-H)=(-1)^{n+1}\det H=\det H$, so the sign
+of the lift does not matter. If $n+1$ is even then $c^{n+1}>0$ for real $c\ne0$,
+forcing $(-1)^k>0$.
+\end{proof}
+
+\begin{remark}[The quiver picture, and where the parity actually sits]
+\label{rem:parityquiver}
+It is worth setting Theorem~\ref{thm:parity} inside the Deligne--Simpson
+machinery, because the same set-up is used in the next paragraph. Rescale all the
+factors by one $\mu$ so that the product is the identity of
+$\mathrm{GL}_{n+1}$: the local classes become $\mu$ with multiplicity $n$ and
+$-\mu$ with multiplicity $1$, the associated star-shaped quiver of
+\cite{cb-icm} has central dimension $n+1$ and $k$ legs of dimension
+$\operatorname{rank}(A_i-\xi_{i1})=1$, so $\alpha=(n+1;1,\dots,1)$, and
+Crawley-Boevey's necessary condition reads
+\[
+  \xi[\alpha]=\prod_{i=1}^k\prod_{j}\xi_{ij}^{\,m_{i,j-1}-m_{ij}}
+  =\prod_{i=1}^k\mu^{\,n}\,(-\mu)
+  =(-1)^k\mu^{\,k(n+1)}=1 .
+\]
+This is precisely $\prod_i\det A_i=1$; over $\mathbb C$ it can always be
+arranged by the choice of $\mu$, so it is not an obstruction there. The parity
+is a statement about the \emph{real} problem: $\mu$ must be real, and when $n+1$
+is even $\mu^{k(n+1)}>0$, forcing $(-1)^k=1$. So the quiver normalisation
+recovers Theorem~\ref{thm:parity}, but by the same determinant identity rather
+than by an independent route.
+
+The same computation verifies the other two conditions of \cite[Thm.~10]{cb-icm} for
+$n=2$, $k=5$: $\alpha=(3;1^5)$ is a positive imaginary root, and
+$p(\alpha)=2$ exceeds the largest value $1$ attained by
+$p(\beta)+p(\gamma)+\cdots$ over the fifteen nontrivial decompositions of $\alpha$
+into positive roots with $\xi=1$. So there exists a solution that is
+\emph{irreducible as a representation}: five harmonic homologies with scalar product
+whose mirrors have no common invariant subspace, for every $k$ satisfying the parity
+condition, with no construction needed. That is not the same as irreducibility of the
+\emph{variety} $V_k$, which is what Theorem~\ref{thm:reduction} needs, and the
+criterion says nothing about it.
+\end{remark}
+
+\subsection{The rigid end, in every dimension}
+
+The low-dimensional case needed in the argument is the following elementary fact.
+
+\begin{lemma}[Four reflections in dimension three]\label{lem:fourref}
+Let $R_0,R_1,R_2,R_3$ be orthogonal reflections of a positive definite
+three-dimensional space and suppose $R_0R_1R_2R_3$ is scalar. Then their normals
+span a subspace of dimension at most two.
+\end{lemma}
+
+\begin{proof}
+The product has determinant $+1$, so the scalar is $I$. Thus
+$R_0R_1=R_3R_2$. If this product is the identity, each pair consists of the same
+reflection and the four normals span at most a two-dimensional space. Otherwise
+the common product is a nonidentity rotation with a unique fixed axis. The axis
+of a product of two reflections is perpendicular to both normals, so all four
+normals lie in the perpendicular plane.
+\end{proof}
+
+\begin{theorem}[$k=n+2$ is always degenerate]\label{thm:rigidend}
+Let $Q$ be positive definite on $\mathbb{R}^{m}$, $m=n+1\ge3$, let
+$R_0,\dots,R_{k-1}$ be $Q$-reflections with $k=n+2=m+1$, and suppose
+$R_0R_1\cdots R_{k-1}=cI$. Then $c=1$, $m$ is odd, and the normals
+$n_0,\dots,n_{k-1}$ do \textbf{not} span $\mathbb{R}^m$. Consequently all $k$
+mirrors contain a common projective point, and the region they bound is unbounded:
+there is no such billiard.
+\end{theorem}
+
+\begin{proof}
+The product lies in $\mathrm{O}(Q)$, and $cI\in\mathrm{O}(Q)$ forces $c=\pm1$.
+Taking determinants, $c^m=(-1)^k=(-1)^{m+1}$; with $c=-1$ this reads
+$(-1)^m=(-1)^{m+1}$, impossible, so $c=1$ and $m$ is odd. (For $m$ even the
+statement is vacuous by Theorem~\ref{thm:parity}.)
+
+Suppose the normals span $\mathbb{R}^m$. Put
+\[
+  V=\langle n_0,n_1,n_2\rangle,\quad W=\langle n_3,\dots,n_{k-1}\rangle,\quad
+  X=R_0R_1R_2,\quad Y=R_3\cdots R_{k-1},
+\]
+so $XY=I$ and $X=Y^{-1}$; note $k-3=m-2\ge1$, so $W$ is defined. Each $R_i$ with
+$i\le2$ fixes $n_i^\perp$ pointwise, so $X$ fixes $V^\perp$ pointwise; likewise
+$Y^{-1}$ fixes $W^\perp$ pointwise. Hence $X$ fixes
+$V^\perp+W^\perp=(V\cap W)^\perp$ pointwise. Since $V+W=\mathbb{R}^m$,
+\[
+  \dim(V\cap W)=\dim V+\dim W-m\le 3+(m-2)-m=1 ,
+\]
+so $\operatorname{codim}\mathrm{Fix}(X)\le1$. As $\det X=(-1)^3=-1$ we have
+$X\neq I$, so $\mathrm{Fix}(X)$ is exactly a hyperplane; an element of
+$\mathrm{O}(Q)$ fixing a hyperplane pointwise and not the identity acts by $-1$ on
+the orthogonal line, so $X=R'$ is a \emph{reflection}, with normal $n'$ spanning
+$\mathrm{Fix}(X)^\perp$. From $\mathrm{Fix}(X)\supseteq(V\cap W)^\perp$ we get
+$n'\in V\cap W$, so $\dim(V\cap W)=1$ and the inequality above is an equality:
+$\dim V=3$.
+
+Now $R_0R_1R_2R'=I$ with $n_0,n_1,n_2,n'$ all in $V$, which is $3$-dimensional and
+ on which $Q$ is definite; each of the four maps preserves $V$ and restricts to a
+ reflection of it. By Lemma~\ref{lem:fourref} the four normals are coplanar, so
+$\dim V\le2$ --- contradicting $\dim V=3$.
+
+Finally, if the normals span a proper subspace $U$ then every mirror contains
+$\mathbb{P}(U^\perp)\neq\emptyset$. Pick a point $p$ in it: if $p$ is affine the
+region is a cone with apex $p$, and if $p$ is at infinity with direction $d$ every
+mirror is invariant under translation by $d$ and so is the region. Either way it is
+unbounded.
+\end{proof}
+
+\begin{remark}[Arbitrary signature]\label{rem:rigidsig}
+Definiteness of $Q$ was used in exactly two places, and both can be replaced by an
+explicit hypothesis, so the theorem holds over any nondegenerate $Q$ --- in
+particular over $\mathbb{C}$, where all nondegenerate forms are equivalent:
+\begin{enumerate}[label=\textup{(\alph*)},nosep]
+  \item $\mathbb{R}^m=V\oplus V^\perp$ with each $R_i$ preserving both, which needs
+        $V=\langle n_0,n_1,n_2\rangle$ \textbf{nondegenerate};
+  \item ``an element of $\mathrm{O}(Q)$ fixing a hyperplane pointwise and not the
+        identity acts by $-1$ on the orthogonal line'', which needs
+        $\mathrm{Fix}(X)$ \textbf{nondegenerate}, i.e.\ its orthogonal line
+        non-isotropic.
+\end{enumerate}
+Everything else is signature-free: the identity
+$(U_1\cap U_2)^\perp=U_1^\perp+U_2^\perp$ holds for any nondegenerate $Q$, and
+$\mathrm{Fix}(R_1R_0)=n_0^\perp\cap n_1^\perp$ exactly whenever $n_0,n_1$ are
+independent, since $R_1R_0x=x$ forces
+$\tfrac{\langle x,n_0\rangle}{\langle n_0,n_0\rangle}n_0
+=\tfrac{\langle x,n_1\rangle}{\langle n_1,n_1\rangle}n_1$ and hence both
+coefficients to vanish --- no appeal to signature anywhere. Moreover the relation is
+invariant under cyclic rotation of the mirrors, since rotating conjugates the
+product, so the split may be taken at any of the $k$ positions and it suffices that
+\emph{some} three cyclically consecutive normals span a nondegenerate $3$-space.
+Whether all $k$ rotations can fail simultaneously we do not determine. The billiard
+application below uses a positive definite $Q$, so these signature issues do not
+arise.
+\end{remark}
+
+\begin{remark}
+Only the case $j=3$ of the splitting is used, and that is what reduces the argument
+to Lemma~\ref{lem:fourref}: three reflections have determinant $-1$, which
+is what rules out $X=I$ and forces $\mathrm{Fix}(X)$ to be a genuine hyperplane. A
+split into two even halves would allow $X=I$ and prove nothing.
+\end{remark}
+
+\subsection{The threshold: what is proved, and what is not}
+
+At $k=n+3$ the expected dimensions coincide. The following explicit example
+illustrates the threshold case in dimension three.
+
+\begin{proposition}[$\mathbb{RP}^3$, $k=6$]\label{prop:rp3}
+There is an explicit configuration of six $Q$-reflections of $\mathbb{R}^4$ with
+integer normals,
+\[
+\begin{gathered}
+  n_0=(1,0,0,-3),\quad n_1=(2,1,-1,1),\quad n_2=(1,3,2,0),\\
+  n_3=(0,-1,4,0),\quad n_4=(0,-55,50,17),\quad n_5=(-171,215,-40,-82),
+\end{gathered}
+\]
+with $Q=x_0^2+x_1^2+x_2^2+x_3^2$ and $R_5R_4R_3R_2R_1R_0=-I$ exactly over
+$\mathbb{Q}$, whose normals have rank $4$, at which
+\[
+  \dim V_6=6k-15=21,\qquad \dim S_6=3k+3=21,\qquad \dim(\text{moduli})=6k-30=6 ,
+\]
+these being the values on the component through the point. Consequently $S_6$
+contains the irreducible component of $V_6$ through that point: \textbf{every
+configuration in that component preserves a quadric}. The invariant form is
+nondegenerate on a nonempty open subset of this component, since it is positive
+definite at the displayed point.
+\end{proposition}
+
+\begin{proof}
+The three Jacobian ranks and the rank of the linear system for the invariant quadric
+are computed over $\mathbb{Q}$ by Gaussian elimination at the displayed point:
+Jacobian of the $15$ equations has rank $15$, the infinitesimal stabiliser is
+spanned by $I$, the Jacobian in the $n_i$ directions has rank
+$6=\dim\mathrm{O}(Q)$, and the $24\times10$ system for $Q$ has rank $9$, so the
+invariant quadric is unique up to scale. Semicontinuity propagates each value to the
+component. Since $\dim S_6=\dim V_6$ and $S_6\subseteq V_6$ is closed, $S_6$ is a
+union of components of $V_6$, and it contains the given point.
+\end{proof}
+
+\subsection{A $6$-reflective projective billiard in $\mathbb{R}^3$}
+
+The counts and Proposition~\ref{prop:rp3} say where to look. Here is an actual
+example. Its priority relative to the literature is not asserted here.
+
+\begin{theorem}\label{thm:rp3example}
+Let $Q=x_0^2+x_1^2+x_2^2+x_3^2$, let $n_i=(a_i,d_i)$ be the six integer vectors
+\[
+\begin{gathered}
+ n_0=(-1,3,-4,-1),\quad n_1=(-1,0,4,1),\quad n_2=(3,4,-1,-2),\\
+ n_3=(0,-8,91,0),\quad n_4=(0,2198,2119,8345),\quad n_5=(-1577,276,1117,-146),
+\end{gathered}
+\]
+let $\varepsilon=(+,+,+,+,-,+)$, and let
+\[
+  \Omega=\{x\in\mathbb{R}^3:\ \varepsilon_i(a_i\cdot x+d_i)<0,\ i=0,\dots,5\},
+\]
+with the transversal field on facet $i$ the pencil of lines through the pole
+$O_i=n_i$ of that facet. Then $\Omega$ is a \textbf{bounded} convex polytope and
+the projective billiard on it is \textbf{$6$-reflective}, with primitive period
+$6$.
+\end{theorem}
+
+\begin{proof}
+The hypotheses of Theorem~\ref{thm:open}, whose proof applies verbatim to a convex
+polytope of $\mathbb{R}^n$ with impacts interior to facets, are verified in exact
+rational arithmetic.
+
+\emph{\textup{(H1)}.} Each $R_i=I-2n_in_i^\top/(n_i\!\cdot\!n_i)$ satisfies
+$R_i^2=I$, $\tr R_i=2$ and $R_i^\top R_i=I$, and
+$R_0R_1R_2R_3R_4R_5=-I$ over $\mathbb{Q}$, computed in both orders. The six normals
+have rank $4$ and the six facets are pairwise distinct.
+
+\emph{Boundedness.} The recession cone is $\{y:\varepsilon_ia_i\cdot y\le0\ \forall
+i\}$, and it is $\{0\}$ exactly when the inward normals positively span
+$\mathbb{R}^3$, i.e.\ when they have rank $3$ and some $\mu\in\mathbb{Q}^6_{>0}$
+satisfies $\sum_i\mu_i\varepsilon_ia_i=0$. Both hold, with
+$\mu=(\tfrac{8056}{65},\tfrac{5581}5,\tfrac{61038}{65},1,2,1)$ and the identity
+checked exactly. Nonemptiness: $x_0=(-\tfrac{49}{100},-\tfrac{153}{100},
+-\tfrac{121}{100})$ satisfies all six inequalities strictly.
+
+\emph{\textup{(H2)}.} The witness orbit starts at
+$p_0=(-\tfrac12,-\tfrac32,-\tfrac54)$, which lies on facet $0$ and strictly inside
+the other five, with direction $u_0=(-\tfrac49,-\tfrac7{10},\tfrac59)$ pointing
+inwards. Its itinerary is $5,4,3,2,1,0$; at each of the six steps the first hit
+(least step parameter) is the predicted facet, with $s>0$ strictly, the impact
+strictly interior to that facet, every losing facet excluded by a strict
+inequality, no non-winning facet parallel to the ray, and nonvanishing
+transversality.
+
+\emph{\textup{(H3)}.} After six steps $p_6=p_0$ and $u_6=u_0$ exactly, so
+$\kappa=1>0$. The six impacts lie on six distinct facets, so the period is
+primitive.
+
+Reflection is implemented projectively: at an impact $q$ on facet $i$ the outgoing
+direction is $w-w_4q$ where $(w,w_4)=R_i\,(u,0)^\top$, which is the harmonic
+condition of Proposition~\ref{prop:law} in the $2$-plane spanned by the ray and the
+transversal.
+\end{proof}
+
+\begin{proposition}[The explicit $\mathbb{R}^3$ billiard is not isolated]
+\label{prop:rp3localfamily}
+In the space $V_6$ of six harmonic homologies with scalar product, the configuration
+of Theorem~\ref{thm:rp3example} is a smooth real point of dimension $21$. Moreover,
+there is a relative open neighbourhood of it in $V_6$ all of whose configurations
+define bounded convex $6$-reflective projective billiards with the same primitive
+itinerary. Its local moduli space modulo $\PGL_4$ has dimension $6$.
+\end{proposition}
+
+\begin{proof}
+Use independent affine coordinates for the axes and centres of the six homologies.
+The exact Jacobian of the $15$ traceless scalar-product equations at the displayed
+rational configuration has rank $15$; hence the implicit-function theorem gives a
+smooth local $36-15=21$ dimensional locus. The infinitesimal stabiliser has
+dimension $1$ in $\mathfrak{gl}_4$, consisting only of scalar matrices, so the
+projective orbit has dimension $15$ and the local quotient has dimension $6$.
+
+All the remaining conditions in the proof of Theorem~\ref{thm:rp3example} are
+strict: a positive dependence among the inward normals, a strictly interior point,
+strict first-hit inequalities, interior impacts, nonvanishing transversality, and
+positive return multiplier. They persist under sufficiently small perturbations.
+The product relation supplies the closing line, and the same continuity argument as
+in Theorem~\ref{thm:open} supplies the oriented return. Thus the openness criterion
+applies throughout a smaller neighbourhood. The rank computation uses the same
+exact rational Jacobian calculation as the verifier for Proposition~\ref{prop:rp3},
+now evaluated at the billiard configuration itself.
+\end{proof}
+
+\begin{remark}
+This lands exactly at the threshold: $k=6=n+3$ for $n=3$. And $k$ is even, as
+Theorem~\ref{thm:parity} requires for odd $n$ --- there is no $5$-reflective
+example in $\mathbb{R}^3$ to be found, which is why the rigid case is empty rather
+than merely degenerate. Two things are \emph{not} claimed. This configuration and
+the one of Proposition~\ref{prop:rp3} are different, and we do not claim they lie on
+the same component of $V_6$; and irreducibility of $V_6$ in dimension~$3$ is open,
+as is the threshold theorem itself (Corollary~\ref{cor:rp3reduction}). What is proved
+here is existence.
+
+Finally, this example is not a kaleidoscope in disguise: its normals are rational,
+so each $\operatorname{tr}(R_aR_b)=2+2\cos\phi_{ab}$ is rational, and by Niven's theorem all
+fifteen values of $\cos\phi_{ab}$ fall outside $\{0,\pm\frac12,\pm1\}$. So every
+one of the fifteen pairs generates an infinite dihedral group and the mirror group
+is infinite.
+\end{remark}
+
+The configuration is produced by a factorisation argument with the splitting
+$6=3+3$ and an elementary property of $\mathrm{O}(4)$:
+
+\begin{lemma}\label{lem:o4}
+Every element of $\mathrm{O}(4)$ of determinant $-1$ has eigenvalue $1$, hence is a
+product of at most three reflections.
+\end{lemma}
+
+\begin{proof}
+In the block normal form the number of $(-1)$-blocks is odd, so $1$ or $3$; in both
+cases $4=2a+\#\{\pm1\text{ blocks}\}$ forces at least one $(+1)$-block.
+\end{proof}
+
+Choose rational normals $n_0,n_1,n_2$ and set
+$X=-(R_2R_1R_0)^{-1}\in\mathrm O(4)$, so $\det X=-1$. By Lemma~\ref{lem:o4},
+$X$ fixes a nonzero rational vector. Choose a rational $v$ with $Xv\ne v$ and put
+$u=Xv-v$. The reflection $R_u$ interchanges $v$ and $Xv$, so
+$Y=R_uX\in\mathrm{SO}(4)$ fixes $v$ and restricts to an element of
+$\mathrm{SO}(v^\perp)\cong\mathrm{SO}(3)$. If this restriction is not the
+identity, let $e$ span its fixed axis and choose a rational
+$a\in v^\perp\cap e^\perp$. The reflection $R_a$ fixes $e$ and reverses the
+orientation of $e^\perp$, so $R_aYR_a=Y^{-1}$. Put $R_b:=YR_a$. Then $R_b^2=I$,
+it fixes $e$, and its determinant on $v^\perp$ is $-1$, so its other eigenvalues
+are $+1$ and $-1$; hence $R_b$ is a reflection and $Y=R_bR_a$. If the restriction is
+the identity, choose any rational reflection $R_a$ of $v^\perp$ and put
+$R_b=R_a$. Thus $Y=R_bR_a$, and
+\[
+              R_uR_bR_aR_2R_1R_0=-I.
+\]
+All choices and operations are rational, giving the claimed construction.
+
+\subsection{The threshold reduces to irreducibility}
+
+The following dimension argument isolates the additional hypothesis needed to turn
+the threshold count into a theorem: irreducibility of the scalar-product locus.
+
+\begin{theorem}[The threshold reduces to irreducibility]\label{thm:reduction}
+Fix $n\ge2$ and $k=n+3$, and suppose there is a point of $V_k\subset\mathbb{RP}^n$
+at which
+\begin{enumerate}[label=\textup{(\alph*)},nosep]
+  \item the Jacobian of the $N=(n+1)^2-1$ scalar-product equations has rank $N$, so
+        that the component through it has dimension $2nk-N$; and
+  \item the component of the locus $S_k$ of configurations preserving a nonzero
+        quadratic form through this point has dimension $nk+n$.
+\end{enumerate}
+If $V_k$ is irreducible, then
+\[
+  V_{n+3}=S_{n+3} :
+\]
+\textbf{every} configuration of $n+3$ harmonic homologies of $\PGL_{n+1}$ with
+scalar product preserves a nonzero quadric.
+\end{theorem}
+
+\begin{proof}
+By (a) and irreducibility, $\dim V_k=2nk-N$. By Proposition~\ref{prop:trichotomy},
+$k=n+3$ gives $nk+n=2nk-N$, so by (b) $\dim S_k\ge\dim V_k$. But $S_k$ is a closed
+subvariety of the irreducible $V_k$, and a closed subvariety of an irreducible
+variety of the same dimension is the whole variety.
+\end{proof}
+
+For $n=3$ the hypotheses (a) and (b) are the content of
+Proposition~\ref{prop:rp3}, certified in exact arithmetic at the displayed
+rational point. So:
+
+\begin{corollary}\label{cor:rp3reduction}
+If $V_6\subset\mathbb{RP}^3$ is irreducible, then every configuration of six
+harmonic homologies of $\PGL_4$ with scalar product preserves a quadric --- the
+threshold theorem in dimension three.
+\end{corollary}
+
+This is worth stating because it moves the problem to where there are tools. By the
+dictionary of Section~\ref{sec:higher}, irreducibility of $V_k$ is irreducibility of
+a relative character variety of the $k$-punctured sphere with involution monodromies,
+which is the multiplicative Deligne--Simpson problem for the star-shaped quiver with
+central dimension $n+1$ and $k$ legs of dimension $1$.
+
+\subsection{Why the grouping argument could not have generalised}
+
+The pair grouping gives a useful dimension count, but it cannot by itself settle the
+threshold in higher dimensions. The pair lemma is as follows.
+
+\begin{lemma}[Pair lemma in dimension $m$]\label{lem:pairgen}
+Let $H_0,H_1$ be harmonic homologies of $\mathbb{RP}^{m-1}$ with axes $L_0\neq L_1$
+and let $A=H_1H_0$. Then $A$ fixes $L_0\cap L_1$ pointwise and, if $A$ is regular
+in the sense that its eigenvalues are $\lambda,\lambda^{-1},1,\dots,1$ with
+$\lambda\neq\pm1$ and the $1$-eigenspace is exactly $L_0\cap L_1$, the quadrics
+preserved by $A$ are exactly those preserved by \emph{both} $H_0$ and $H_1$, and
+they form a linear space of dimension
+\[
+  1+\binom{m-1}2 .
+\]
+A single harmonic homology preserves a linear space of quadrics of dimension
+$1+\binom m2$.
+\end{lemma}
+
+\begin{proof}
+Both $H_i$ fix $L_0\cap L_1$ pointwise, hence so does $A$; and
+$H_0AH_0=A^{-1}$, so $H_0$ interchanges the $\lambda$- and
+$\lambda^{-1}$-eigenlines and preserves the $1$-eigenspace. In a basis
+$(e_\lambda,e_{\lambda^{-1}},f_3,\dots,f_m)$ adapted to this, $\tau_A(Q)$ multiplies
+$Q_{ij}$ by $\lambda_i\lambda_j$, so $Q$ is $A$-invariant exactly when $Q_{ij}=0$
+unless $\lambda_i\lambda_j=1$: this leaves $Q_{12}$ and the whole block on the
+$1$-eigenspace, of dimension $1+\binom{m-1}2$. In the same basis
+$H_0=\left(\begin{smallmatrix}0&q&\\r&0&\\&&I\end{smallmatrix}\right)$ with $qr=1$,
+since $H_0^2=I$ and $H_0$ is the identity on $L_0\supseteq L_0\cap L_1$. For
+$Q=2\beta x_1x_2+Q'$ with $Q'$ on the $1$-eigenspace, $Q(H_0x)=2\beta qr\,x_1x_2+Q'=Q$.
+So every $A$-invariant quadric is $H_0$-invariant, hence also $H_1=AH_0$-invariant;
+the converse is immediate. For a single homology, in a basis where
+$H=\operatorname{diag}(-1,1,\dots,1)$ the invariant quadrics are those with
+$Q_{1j}=0$ for $j\ge2$: dimension $1+\binom m2$.
+\end{proof}
+
+\begin{proposition}[The deficit]\label{prop:deficit}
+Inside the projective space of quadrics of $\mathbb{RP}^{m-1}$, of dimension
+$\binom{m+1}2-1$, the locus $\mathcal Q_A$ of Lemma~\ref{lem:pairgen} has
+codimension $2m-2$. Hence $p$ pairs of mirrors can be expected to share a quadric
+only when
+\[
+  p\,(2m-2)\le\binom{m+1}2-1,\qquad\text{i.e.}\qquad p\le\frac{m+2}4 .
+\]
+At the threshold $k=n+3=m+2$ the grouping uses $p=\lfloor(m+2)/2\rfloor$ pairs, and
+the shortfall $p(2m-2)-\bigl(\binom{m+1}2-1\bigr)$ is
+\[
+\begin{array}{c|cccccc}
+ m       & 3 & 4 & 5 & 6 & 7 & 8\\\hline
+ \text{deficit} & 3 & 9 & 10 & 20 & 21 & 35
+\end{array}
+\]
+\end{proposition}
+
+\begin{proof}
+$\binom{m+1}2-1-\binom{m-1}2=2m-2$, and the rest is arithmetic.
+\end{proof}
+
+\begin{remark}
+At $m=3$ the tabulated deficit is $3$, but the grouping there is $2+2+1$, not
+$2+2$. The fifth homology is $-N^{-1}$, so the real requirement is that one pencil
+$\mathcal P_A$ meet the polarity condition for $N$, which is $m-1=2$ conditions on a
+$1$-parameter pencil: a shortfall of exactly $\mathbf1$. And the relation pays
+exactly one condition, namely $\det(B-I)=0$, which holds automatically because
+$B=H_3H_2$ is a product of two involutions. That coincidence --- one condition
+needed, one condition supplied --- is a special feature of $m=3$. For $m\ge4$ the shortfall is $9$ or more while the
+relation still supplies one condition. So the grouping argument does not merely
+resist generalisation: it cannot generalise. Theorem~\ref{thm:reduction} is the way
+through, and it needs irreducibility instead.
+\end{remark}
+
+\begin{remark}[What irreducibility of $V_6$ would take]\label{rem:v6irr}
+One can try a fibration over the first three factors. Split $6=3+3$: the relation reads
+$H_5H_4H_3=c(H_2H_1H_0)^{-1}=:X$, and $H_5X=H_4H_3$ must be a product of \emph{two}
+harmonic homologies, which by Lemma~\ref{lem:pairgen} means
+$\operatorname{rank}(H_5X-I)\le2$.
+
+Now comes the point. Writing $H_5=I-2w\tilde w/s$,
+\[
+  H_5X-I=(X-I)-\tfrac2s\,w\,(\tilde wX),
+\]
+a \textbf{rank-one perturbation} of $X-I$. A rank-one perturbation lowers rank by at
+most one, so $\operatorname{rank}(H_5X-I)\le2$ \emph{forces}
+$\operatorname{rank}(X-I)\le3$, i.e.\ $\det(X-I)=0$: $X$ must have eigenvalue $1$.
+For general harmonic homologies that is \textbf{not} automatic --- a product of three
+of them has determinant $-1$ but need not fix a point --- and it is one condition.
+Given it, $\operatorname{rank}(X-I)=3$ and the three further conditions for a
+rank-one perturbation of a rank-$3$ matrix to have rank $2$ are that $w$ lie in
+$\operatorname{im}(X-I)$, that $(\tilde wX)^\top$ lie in
+$\operatorname{im}\bigl((X-I)^\top\bigr)$, and one scalar normalisation. So the count
+is
+\[
+\begin{aligned}
+  &\underbrace{18-1}_{H_0,H_1,H_2\ \text{with}\ \det(X-I)=0}
+  +\underbrace{6-3}_{H_5\ \text{in the determinantal locus}}
+  +\underbrace{1}_{\text{factorising}\ H_4H_3}\\
+  &\hspace{4cm}=17+3+1=21=\dim V_6 .
+\end{aligned}
+\]
+
+And the asymmetry that appears here is exactly the reason $S_6$ can be a
+\emph{component} rather than a thin subvariety. On $S_6$ the mirrors are
+$Q$-reflections, so $X\in\mathrm{O}(Q)$ with $\det X=-1$, and then
+Lemma~\ref{lem:o4} makes $\det(X-I)=0$ \textbf{automatic}: the $3+3$ split is free
+there and costs nothing, while off $S_6$ it costs a condition. That is where the
+excess dimension comes from.
+
+What remains, and it is now a question about two explicit varieties rather than
+about billiards: is the hypersurface $\{\det(X-I)=0\}\subset\mathrm{Inv}^3$
+irreducible, and is the determinantal locus of admissible $H_5$ irreducible of
+dimension $3$ over it? With both, $V_6$ is irreducible and
+Corollary~\ref{cor:rp3reduction} gives the threshold theorem in dimension three.
+
+Numerical evidence points that way: Newton's method from sixteen random starts
+converged to sixteen points of $V_6$, and \emph{every one} of them preserved a
+quadric, with the smallest singular value of the linear system at the level of
+machine epsilon while the next one was of order $10^{-1}$. That is evidence, not
+proof, and it is recorded as such.
+\end{remark}
+
+\subsection{A second example in $\mathbb{R}^3$, and the dichotomy repeats}
+
+The example of Theorem~\ref{thm:rp3example} is not a kaleidoscope. There is also
+one with data in $\{0,\pm1\}$, whose mirror group is finite.
+
+\begin{theorem}\label{thm:rp3d4}
+Let $Q=x_0^2+x_1^2+x_2^2+x_3^2$ and take the six mirrors with normals
+\[
+\begin{gathered}
+ n_0=(1,0,1,0),\quad n_1=(1,0,-1,0),\quad n_2=(1,0,0,-1),\\
+ n_3=(0,1,1,0),\quad n_4=(0,1,-1,0),\quad n_5=(0,1,0,-1),
+\end{gathered}
+\]
+which are six of the twelve mirrors of the reflection group $D_4$, with
+$\varepsilon=(-,-,+,-,-,+)$ and $\Omega=\{x:\varepsilon_i(a_i\cdot x+d_i)<0\}$. Then
+$\Omega$ is a bounded convex polytope and the projective billiard on it is
+$6$-reflective with primitive period $6$; the witness orbit starts at
+$p_0=(\tfrac47,\tfrac45,-\tfrac47)$ with direction $u_0=(15,5,3)$, has itinerary
+$2,1,3,5,4,0$, and closes with $p_6=p_0$ and $\kappa=1$ exactly over $\mathbb{Q}$.
+Its mirror group is \textbf{finite}, of order $96$ in $\PGL_4$ and $192$ in
+$\mathrm{O}(4)$: it is a spherical kaleidoscope of $\mathbb{RP}^3$.
+\end{theorem}
+
+\begin{proof}
+As in Theorem~\ref{thm:rp3example}, all hypotheses of Theorem~\ref{thm:open} are
+certified in exact rational arithmetic: the six maps are $Q$-reflections whose
+product in the order of the itinerary is $\pm I$; the recession cone is $\{0\}$,
+by rank $3$ of the inward normals together with an explicit
+$\mu\in\mathbb{Q}^6_{>0}$ with $\sum\mu_i\varepsilon_ia_i=0$; the point
+$(\tfrac12,\tfrac12,-\tfrac14)$ is interior; and at each of the six steps the first
+hit is the predicted facet, strictly interior to it, with every losing facet excluded
+strictly. Finiteness of the group is a breadth-first closure in $\PGL_4$, exact.
+\end{proof}
+
+\begin{remark}
+In dimension three these examples exhibit both behaviours: Theorem~\ref{thm:rp3d4}
+has a finite reflection group, while Theorem~\ref{thm:rp3example} has an infinite
+mirror group. The latter shows that the moduli space is not a list of symmetries.
+
+A remark on how it was found, because it is a methodological point. A first sweep over
+the mirrors of $D_4$, $B_4$ and $F_4$ found nothing, because it fixed
+$\varepsilon_0=+1$ to halve the work --- and $\varepsilon\mapsto-\varepsilon$ is not a
+symmetry of the problem, it exchanges a polytope for a different region. With all
+$2^k$ sign patterns, and comparing the itineraries the dynamics actually produces
+against \emph{all} orderings of the chosen mirrors whose product is scalar rather
+than only the cyclic ones, the example appears at once.
+\end{remark}
+
+\subsection{A $7$-reflective projective billiard in $\mathbb{R}^4$}
+
+The threshold $k=n+3$ is also attained one dimension higher.  The following
+example is deliberately given with rational data, including a rational witness.
+
+\begin{theorem}\label{thm:rp4b5}
+Let $Q_0=X_0^2+\cdots+X_4^2$ and let
+\[
+\begin{gathered}
+ n_0=(0,1,0,0,-1),\ n_1=(0,0,1,0,-1),\ n_2=(0,0,0,1,0),\\
+ n_3=(1,-1,0,0,0),\ n_4=(0,1,1,0,0),\ n_5=(1,0,0,0,1),\\
+ n_6=(1,0,-1,0,0).
+\end{gathered}
+\]
+These are roots of $B_5$.  Put $R_i=I-2n_i n_i^T/(n_i^Tn_i)$, let
+\[
+ T=\begin{pmatrix}
+ -1/3&-1/3&1/3&1/3&1/3\\
+ 1&0&0&0&0\\0&1&0&0&0\\0&0&1&0&0\\0&0&0&1&0
+ \end{pmatrix},\qquad Q=T^T T,
+\]
+and use the affine chart whose last homogeneous coordinate is $1$.  The seven
+walls, oriented inward, are
+\[
+\begin{array}{rclcrcl}
+ -x+w&<&0,&&-y+w&<&0,\\
+ z&<&0,&&4x+y-z-w-1&<&0,\\
+ -x-y&<&0,&&x+y-z-4w-1&<&0,\\
+ &&& &x+4y-z-w-1&<&0.
+\end{array}
+\]
+Then their projective billiard, with the polar fields for $Q$, is a bounded
+convex $7$-reflective projective billiard of primitive period $7$.  A rational
+witness starts on the fifth wall at
+\[
+ p_0=(0,0,-4/7,-2/21),\qquad
+ u_0=(1/5,1,-1/4,-1/5),
+\]
+and has successive first impacts on the walls
+\[
+ 5,6,0,1,2,3,4.
+\]
+It closes with $p_7=p_0$ and $u_7=u_0$.
+\end{theorem}
+
+\begin{proof}
+The explicit $B_5$ calculation gives
+\[
+ R_6R_5R_4R_3R_2R_1R_0=-I_5.
+\]
+Thus $H_i=T^{-1}R_iT$ are $Q$-reflections and their product is projectively
+scalar.  The displayed affine inequalities are precisely the oriented images of
+the $n_i^\perp$, cleared of denominators so as to be legible.  The positive
+dependence is in the \emph{unscaled} normalisation: taking the covectors
+$n_i^\top T$ with the sign that makes the interior negative, their seven spatial
+parts sum to zero, so $\mu=(1,\dots,1)$ is a strictly positive dependence and
+the recession cone is trivial; those seven vectors have rank four.  Clearing
+denominators rescales three of the seven and destroys the all-ones dependence,
+so the certificate must be read before that step.  Finally
+$(1/10,1/10,-1/10,0)$ is strictly interior.  So the domain is nonempty, bounded
+and convex.
+
+For the stated $(p_0,u_0)$, exact rational ray tracing gives the seven positive
+flight times
+\[
+ \frac4{189},\ \frac{74}{867},\ \frac{1050}{10693},\ \frac{105}{703},\
+ \frac{1575}{49799},\ \frac{17340}{112703},\ \frac{20}{129}.
+\]
+At each step the indicated wall is the unique first wall and the impact is
+strictly interior relative to it.  Applying $H_i$ to the homogeneous tangent
+vector and returning to the affine chart gives $p_7=p_0$ and $u_7=u_0$ exactly.
+The strict inequalities persist under perturbation of the initial data, so
+Theorem~\ref{thm:open} gives an open set of $7$-periodic orbits.  Since the
+seven walls are distinct, the exhibited period is primitive.
+\end{proof}
+
+\begin{remark}[Reproducibility; calculation added by Codex, 8 August 2026]
+Every equality and strict inequality in Theorem~\ref{thm:rp4b5} is checked over
+$\mathbb{Q}$ by \path{verificadores/reflectivo_rp4_b5.py}.  In particular,
+the theorem does not rely on the floating-point search that located the word.
+\end{remark}
+
+\subsection{An $8$-reflective projective billiard in $\mathbb{R}^5$}
+
+The preceding word extends once more, and in this case the extension is also
+realised dynamically.
+
+\begin{theorem}\label{thm:rp5b6}
+There is a bounded convex $8$-reflective projective billiard in $\mathbb{R}^5$
+with primitive period $8$, preserving a positive definite quadric.  It may be
+chosen with rational data.  More precisely, take in $\mathbb{R}^6$ the roots
+\[
+\begin{gathered}
+(0,1,0,0,-1,0),(0,0,1,0,-1,0),(0,0,0,1,0,0),(1,-1,0,0,0,0),\\
+(0,1,1,0,0,0),(1,0,0,0,1,0),(1,0,-1,0,0,0),(0,0,0,0,0,1),
+\end{gathered}
+\]
+with orientations $(+,+,-,+,-,-,+,-)$ and the affine chart defined by
+$\ell=(-1,1,1,1,3,1)$.  The associated $Q$-reflections have product $-I_6$.
+The point and direction
+\[
+p_0=(-2/33,0,0,4/11,4/11),\qquad
+u_0=(-11/10,1,-2/5,7/10,1/5)
+\]
+start on wall $4$ and have first-impact itinerary
+\[
+5,6,7,0,1,2,3,4,
+\]
+closing exactly with $p_8=p_0$ and $u_8=u_0$.
+\end{theorem}
+
+\begin{proof}
+The first seven roots are those of Theorem~\ref{thm:rp4b5}, extended by zero,
+and their product is $\operatorname{diag}(-I_5,1)$.  The final coordinate
+reflection makes the product $-I_6$.  In the stated chart the eight inward
+spatial normals have positive dependence with all coefficients $1$, and the
+point $(-1/10,1/10,1/10,1/10,1/10)$ is strictly interior, proving boundedness
+and nonemptiness.  Exact rational tracing from the displayed data has the stated
+itinerary, with every competing impact strictly later and every impact interior
+relative to its wall; it returns exactly to $(p_0,u_0)$.  Theorem~\ref{thm:open}
+then supplies an open set of $8$-periodic trajectories.
+\end{proof}
+
+\begin{remark}[Reproducibility; calculation added by Codex, 8 August 2026]
+The full list of affine inequalities, flight times and strict comparisons for
+Theorem~\ref{thm:rp5b6} is checked over $\mathbb{Q}$ by
+\path{verificadores/reflectivo_rp5_b6.py}.
+\end{remark}
+
+\subsection{A $9$-reflective projective billiard in $\mathbb{R}^6$}
+
+The threshold is attained once more, two dimensions higher, and with $k$ odd.
+
+\begin{theorem}\label{thm:rp6b7}
+Let $Q=\sum_{j=1}^{7}x_j^2$ and let the nine mirrors of $\mathbb{RP}^6$ have normals
+\[
+\begin{aligned}
+  n_0&=(0,0,0,0,0,1,-1), & n_1&=(0,1,0,1,0,0,0), & n_2&=(0,0,1,0,0,0,0),\\
+  n_3&=(0,0,0,1,0,1,0),  & n_4&=(1,0,0,0,0,0,0), & n_5&=(0,1,0,0,0,0,-1),\\
+  n_6&=(0,0,0,0,1,0,0),  & n_7&=(0,0,0,1,0,0,-1),& n_8&=(0,1,0,0,0,1,0),
+\end{aligned}
+\]
+with transversal field on face $i$ the pencil through the pole $O_i=n_i$ of $Q$, and
+take the affine chart $\ell\cdot X=1$ with $\ell=(-1,1,-1,-3,1,1,-1)$, solving for the
+fourth homogeneous coordinate, and the sign vector
+$\varepsilon=(-,+,+,+,+,-,-,+,-)$. The resulting bounded convex polytope of
+$\mathbb{R}^6$ is a $9$-reflective projective billiard.
+\end{theorem}
+
+\begin{proof}
+The nine reflections are involutions of $\mathrm{O}(Q)$ with $R_8\cdots R_0=-I_7$,
+which is (H1). The polytope is bounded because the nine outward normals in the chart
+\emph{sum to zero} --- so $\mu=(1,\dots,1)$ is a strictly positive certificate --- and
+have rank six. The point
+\[
+p_0=(-\tfrac6{19},\tfrac7{228},-\tfrac6{19},0,
+\tfrac7{228},-\tfrac7{228})
+\]
+lies on face $6$ and strictly inside the other eight. Exact rational tracing from
+$p_0$ in the direction
+\[
+u_0=10^{-6}(-1003425,-270995,31421,1824019,-819948,-545098)
+\]
+gives the itinerary
+$7,8,0,1,2,3,4,5,6$, with every impact strictly interior to its face, every competing
+face excluded by a strict inequality, all flight parameters positive, and a return to
+$p_0$ with $\kappa=1$. Theorem~\ref{thm:open} applies.
+\end{proof}
+
+\begin{remark}
+Three points. First, $k=9$ is odd and $n=6$ is even, which is exactly what
+Theorem~\ref{thm:parity} permits; in odd ambient dimension $k$ would have been forced
+even. Second, $9=n+3$, so this is again the threshold, as in
+Theorems~\ref{thm:rp3example}, \ref{thm:rp3d4}, \ref{thm:rp3d4b}, \ref{thm:rp4b5} and
+\ref{thm:rp5b6}. Third, and this is the informative part, the word obeys
+Theorem~\ref{thm:bmstops} on the nose: six of its roots are of type $e_i\pm e_j$ and
+live on the coordinates $\{1,3,5,6\}$, forming a $D_4$ block of rank four, and the
+other three are the sign changes $e_0,e_2,e_4$. The block has the same multiset of
+$\cos^2$ of pairwise angles as the cores of Theorems~\ref{thm:rp4b5} and
+\ref{thm:rp5b6} and as the configuration of Theorem~\ref{thm:rp3d4b}: it is the same
+rank-four object again, and the three isolated coordinates make the configuration
+reducible, of corank three. Checked over $\mathbb{Q}$ by
+\path{verificadores/reflectivo_rp6_b7.py}.
+\end{remark}
+
+\subsection{Why the $B_m$ route stops at rank four}
+
+The words used in Theorems~\ref{thm:rp4b5} and \ref{thm:rp5b6} live in $B_5$ and
+$B_6$, and it is natural to ask how far that supply goes. Not far, and the reason is
+a counting argument inside $S_m$.
+
+\begin{theorem}[The $B_m$ threshold words are reducible for $m\ge5$]\label{thm:bmstops}
+Let $m\ge5$ and let $r_1\cdots r_{m+2}=-I_m$ be a word of $m+2$ reflections of
+$B_m$. Then the configuration is reducible: some proper nonzero subspace of
+$\mathbb{R}^m$ is invariant under all the $r_i$. The same holds in $D_m$.
+\end{theorem}
+
+\begin{proof}
+Write $B_m=(\mathbb{Z}/2)^m\rtimes S_m$. A reflection in $e_i$ has trivial
+permutation part; a reflection in $e_i\pm e_j$ has permutation part the transposition
+$(ij)$. Since $-I_m$ has trivial permutation part, the $t$ transpositions occurring
+must multiply to the identity of $S_m$.
+
+If some coordinate $c$ occurs in no root of type $e_i\pm e_j$ then $\langle
+e_c\rangle$ is invariant under every $r_i$; and if the graph whose edges are those
+transpositions is disconnected, the span of the coordinates of one component is
+invariant. So irreducibility forces that graph to be connected and to span all $m$
+vertices, that is, the transpositions act transitively.
+
+A transitive factorisation of the identity of $S_m$ into $t$ transpositions satisfies
+$t=2(m-1)+2g$ with $g\ge0$, hence $t\ge2(m-1)$; and $t\le m+2$. Therefore
+$2(m-1)\le m+2$, that is $m\le4$. In $D_m$ every root is of type $e_i\pm e_j$, so
+$t=m+2$ and the same inequality applies.
+\end{proof}
+
+\begin{corollary}\label{cor:onlyE7E8}
+Let $m\ge5$ and let a word of $m+2$ reflections with product $-I_m$ generate a
+finite reflection group acting irreducibly on $\mathbb{R}^m$. Then that group is $E_7$
+(with $m=7$) or $E_8$ (with $m=8$).
+\end{corollary}
+
+\begin{proof}
+The group has rank $m$, acts irreducibly and contains $-I_m$, which is the product.
+Among the irreducible finite reflection groups containing $-I$, those of rank at
+least five are $B_m$, $D_m$ with $m$ even, $E_7$ and $E_8$;
+Theorem~\ref{thm:bmstops} removes the first two.
+\end{proof}
+
+The inequality is sharp and says more than the statement. At $m=4$ it forces $t=6$
+and no sign changes at all, so every irreducible threshold word of rank four consists
+of six roots of type $e_i\pm e_j$: a $D_4$ word. Deleting the isolated coordinates
+from the words of Theorems~\ref{thm:rp4b5} and \ref{thm:rp5b6} leaves exactly such a
+core, and it is the same core in both. The uniform supply of $m+2$ reflections of
+$B_m$ with product $-I_m$, for every $m\ge5$, is therefore that one rank-four
+configuration padded with coordinate reflections, and its algebraic content does not
+grow with $m$. That the core is more than algebra is the next example.
+
+\begin{theorem}\label{thm:rp3d4b}
+The bounded convex polytope of $\mathbb{R}^3$ cut out by the six faces with normals
+\[
+  n_0=(0,1,0,-1),\quad n_1=(0,0,1,-1),\quad n_2=(1,-1,0,0),
+\]
+\[
+  n_3=(0,1,1,0),\quad n_4=(1,0,0,1),\quad n_5=(1,0,-1,0)
+\]
+in the affine chart $\ell=(-2,-2,-2,-1)$, with transversal field on face $i$ the
+pencil through the pole $O_i=n_i$ of $Q=\sum_j x_j^2$, is a $6$-reflective projective
+billiard. It is not projectively equivalent to the billiard of
+Theorem~\ref{thm:rp3d4}.
+\end{theorem}
+
+\begin{proof}
+The six reflections satisfy $R_5\cdots R_0=-I_4$, which is (H1). The polytope is
+bounded, by an explicit positive rational combination of the outward normals summing
+to zero together with those normals having rank three, and nonempty, the point
+$(-\tfrac19,-\tfrac19,\tfrac19)$ being strictly interior to all six half-spaces. The
+ray from that point in direction $(\tfrac54,-\tfrac14,2)$ meets face $3$ first;
+starting there, exact rational tracing gives the itinerary $4,5,0,1,2,3$ with every
+impact strictly interior to its face, every competing face excluded by a strict
+inequality, all flight parameters positive, and a return to the starting point with
+$\kappa=1$. Theorem~\ref{thm:open} applies. For the last claim, both configurations
+are irreducible, so each preserves a unique quadric up to scale; a projective
+equivalence between them would carry $Q$ to a multiple of $Q$ and hence be orthogonal
+up to scale, but the multiset of $\cos^2$ of the angles between normals has three
+zero entries here and six for Theorem~\ref{thm:rp3d4}.
+\end{proof}
+
+\begin{remark}
+Its mirror group is all of $W(D_4)$, of order $192$, exactly as for
+Theorem~\ref{thm:rp3d4}. So this is a second kaleidoscope in $\mathbb{R}^3$ rather
+than a third kind of example, and like the symmetric pentagon of the plane it unfolds
+to a finite group and has \emph{every} orbit periodic. The example with infinite
+mirror group in $\mathbb{R}^3$ remains the one of Theorem~\ref{thm:rp3example}.
+Checked over $\mathbb{Q}$ by \path{verificadores/reflectivo_rp3_d4b.py}.
+\end{remark}
+
+\subsection{A rank bound, and a lower bound on \texorpdfstring{$k$}{k}}
+
+Before returning to irreducibility, one lemma that costs a line and constrains
+everything.
+
+\begin{lemma}[Rank bound]\label{lem:rankbound}
+For the canonical lifts $H_i=I-2O_iL_i/(L_iO_i)$ of harmonic homologies of $\PGL_m$,
+\[
+  \rk\bigl(H_{j-1}\cdots H_0-I\bigr)\le j .
+\]
+\end{lemma}
+
+\begin{proof}
+The product telescopes:
+$H_{j-1}\cdots H_0-I=\sum_{i=0}^{j-1}H_{j-1}\cdots H_{i+1}(H_i-I)$, a sum of $j$
+matrices each of rank $1$, since $H_i-I=-2O_iL_i/(L_iO_i)$.
+\end{proof}
+
+\begin{corollary}\label{cor:rankbound}
+\begin{enumerate}[label=\textup{(\alph*)},nosep]
+  \item A product of $j<m$ harmonic homologies has eigenvalue $1$ with multiplicity
+        at least $m-j$. In particular a product of three of them in $\PGL_4$ always
+        has eigenvalue $1$.
+  \item If $H_{k-1}\cdots H_0=cI$ with $c\neq1$, then $\rk(cI-I)=m\le k$, i.e.
+        \[
+          \boxed{\;k\ge n+1\;}
+        \]
+        There are no $k$-reflective projective billiards of $\mathbb{RP}^n$ with
+        $k<n+1$ and nontrivial scalar. For $n=2$ this is $k\ge3$, which is sharp:
+        Fierobe's triangle.
+  \item Consequently, in the splitting $6=3+3$ of Remark~\ref{rem:v6irr} the
+        condition $\det(X-I)=0$ is one genuine condition when $c=-1$ --- eigenvalue
+        $1$ comes free by \textup{(a)}, and eigenvalue $-1$ does not --- and is
+        automatic when $c=+1$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+(a) is Lemma~\ref{lem:rankbound} read as $\dim\ker(M-I)\ge m-j$. (b) is the same
+lemma applied to the product, since $\rk(cI-I)=m$ for $c\neq1$. (c) follows from (a)
+with $j=3$, $m=4$, plus the computation
+$\det(X-I)=\pm\det(M-cI)$ for $X=cM^{-1}$.
+\end{proof}
+
+\subsection{A conditional reduction for the regular part of $V_6$}
+
+Use determinant-one matrix lifts and work over $\mathbb C$. Put
+\[
+ \mathcal P=\{M\in\mathrm{SL}_4:\operatorname{rank}(M-I)\le2\}.
+\]
+Every product of two normalized harmonic homologies belongs to $\mathcal P$.
+The distinction between the full determinantal locus and the image of the
+factorisation map matters at exceptional matrices.
+
+\begin{lemma}[The pair locus and its regular fibres]\label{lem:Pirr}
+$\mathcal P$ is irreducible of dimension $11$. On its nonempty open subset
+$\mathcal P^{\mathrm{rs}}$ of matrices with eigenvalues
+$1,1,\lambda,\lambda^{-1}$, $\lambda\ne0,\pm1$, and two-dimensional
+$1$-eigenspace, the factorisation map from pairs of harmonic homologies
+is smooth with geometrically irreducible one-dimensional fibres.
+The fibre over $I$ instead has dimension $6$.
+\end{lemma}
+
+\begin{proof}
+Consider the incidence space of pairs $(F,M)$ with
+$F\in\mathrm{Gr}(2,4)$ and $M|_F=I$. In local coordinates for the Grassmannian,
+such a matrix has blocks $\left(\begin{smallmatrix}P&0\\R&I\end{smallmatrix}\right)$,
+with $P\in\mathrm{SL}_2$ and arbitrary $R$. This is a locally trivial
+irreducible family of dimension $4+3+4=11$, surjecting onto $\mathcal P$.
+Over the rank-two open subset $F=\ker(M-I)$ is unique, proving the dimension.
+
+For $M\in\mathcal P^{\mathrm{rs}}$, write $F=\ker(M-I)$ and let $E$ be
+the sum of the $\lambda$ and $\lambda^{-1}$ eigenlines. A factor $H_0$ obeys
+$H_0MH_0=M^{-1}$, so preserves $F,E$ and interchanges those eigenlines.
+Its restriction to $E$ already has a one-dimensional negative eigenspace;
+since a harmonic homology has exactly one negative eigenline, it is identity
+on $F$. In an eigenbasis of $E$ it is
+$\left(\begin{smallmatrix}0&q\\q^{-1}&0\end{smallmatrix}\right)$, $q\ne0$.
+Conversely each such choice gives the pair $H_1=MH_0,H_0$.
+The fibre is $\mathbb G_m$. Ordering the simple eigenvalues and choosing
+eigenvectors etale locally proves smoothness. For $M=I$ one simply has
+$H_1=H_0$, and all homologies are allowed, a six-dimensional family.
+\end{proof}
+
+Group the six mirrors into $A=H_1H_0$, $B=H_3H_2$, $C=H_5H_4$.
+Scalar monodromy forces $C=c(BA)^{-1}$ and
+$\operatorname{rank}(BA-cI)\le2$. Define
+\[
+ \mathcal B_c=\{(A,B)\in\mathcal P^2:
+                   \operatorname{rank}(BA-cI)\le2\},
+\]
+and let $\mathcal B_c^{\mathrm{rs}}$ impose in addition
+$A,B,c(BA)^{-1}\in\mathcal P^{\mathrm{rs}}$.
+Above this open subset the six-mirror locus is a smooth family of
+geometrically irreducible fibres of dimension $3$.
+
+\begin{proposition}[Conditional global reduction]\label{prop:v6reduce}
+Suppose $\mathcal B_c^{\mathrm{rs}}$ is nonempty and irreducible and every
+component of $V_6$ meets its inverse image. Then $V_6$ is irreducible;
+under the hypotheses of Corollary~\ref{cor:rp3reduction} this implies its
+threshold conclusion. Neither hypothesis on the global components is
+established here.
+\end{proposition}
+
+\begin{proof}
+The smooth factorisation map over the indicated irreducible base has
+geometrically irreducible fibres. Smoothness makes it open, so all components
+dominate the base, and irreducibility of the geometric generic fibre leaves
+exactly one. By the assumed intersection with every component, this open
+subset is dense in all of $V_6$; its closure is therefore all of $V_6$.
+\end{proof}
+
+The expression $11+11-4+3=21$ is an expected dimension count, not a proof
+that the pulled-back rank condition has codimension four. The dimension
+$21$ is known at the submersive examples by the independent differential
+calculation. Exceptional pair fibres and possible additional components
+must be controlled before promoting the regular reduction to a global one.
+
+Finally, a local parameterisation of harmonic homologies will be useful.
+
+\begin{lemma}[Rank-one chart for harmonic homologies]\label{lem:invchart}
+For a real vector space $V$ of dimension $m$, every projective harmonic homology
+has a lift
+\[
+             N=2w\tilde w/(\tilde w w)-I,
+\]
+where $w\in V$, $\tilde w\in V^*$ and $\tilde w w\ne0$. This identifies the
+space of such homologies with the open subset $\tilde w w\ne0$ of
+$\mathbb P(V)\times\mathbb P(V^*)$, which is irreducible of dimension
+$2m-2$.
+\end{lemma}
+
+\begin{proof}
+The displayed map fixes $w$ and acts by $-I$ on $\ker\tilde w$, so it represents
+a homology; changing its sign gives the usual involutive lift that fixes its
+axis. Conversely, the centre line and axis hyperplane of any harmonic homology
+give $w$ and $\ker\tilde w$, and their non-incidence is exactly $\tilde w w\ne0$.
+The parameter space is a nonempty open subset of a product of projective spaces.
+\end{proof}
+
+\begin{proposition}[The determinantal locus is a $(1,1)$-hypersurface]\label{prop:11hyp}
+Let $Y\in\PGL_4$ with $\rk(Y-I)=3$, write $C=Y-I$, let $\kappa$ span $\ker C$ and
+$\ell$ span $\ker C^\top$. In the parameterisation of
+Lemma~\ref{lem:invchart}, the locus
+$\mathcal D_Y=\{H\in\mathrm{Inv}:\rk(HY-I)\le2\}$ is cut out by
+\[
+  \textup{(i)}\ \ell w=0,\qquad
+  \textup{(ii)}\ \tilde w\kappa=0,\qquad
+  \textup{(iii)}\ 2\,b(\tilde w)^\top w=\tilde ww,
+\]
+where $b(\tilde w)$ solves $b^\top C=\tilde wY$ and depends linearly on $\tilde w$.
+Conditions \textup{(i)} and \textup{(ii)} are linear, so $\mathcal D_Y$ is a
+\textbf{bidegree $(1,1)$ hypersurface in $\RP^2\times\RP^2$}, irreducible of
+dimension $3$ whenever its coefficient matrix has rank $\ge2$.
+\end{proposition}
+
+\begin{proof}
+Writing $H=I-2w\tilde w/s$ with $s=\tilde ww$, we get
+$HY-I=C-\tfrac2s\,w\,(\tilde wY)$, a rank-one perturbation of $C$. By Wedderburn's
+rank-one reduction, if $u=Ca$ and $v^\top=b^\top C$ then $\rk(C-t\,uv^\top)=\rk C-1$
+exactly when $t\,b^\top Ca=1$; and the perturbation lowers the rank at all only if
+$u\in\operatorname{im}C$ and $v^\top\in\operatorname{im}C^\top$. The first is
+$\ell w=0$. For the second, $\tilde wY$ must annihilate $\ker C$, and
+$Y\kappa=\kappa$ gives $\tilde wY\kappa=\tilde w\kappa$, which is (ii). The scalar
+condition is $\tfrac2s\,b^\top w=1$, i.e.\ (iii), and $b^\top w$ is well defined
+because $b$ is determined modulo $\ell$ and $\ell w=0$. Bidegree $(1,1)$ forms are
+reducible only if they factor as a form in $w$ times a form in $\tilde w$, i.e.\ only
+in rank $1$.
+\end{proof}
+
+\begin{remark}
+At the configuration of Theorem~\ref{thm:rp3example} this is checked in exact
+arithmetic: $\rk(X-I)=3$, both kernels are lines, and the $3\times3$ coefficient
+matrix of \textup{(iii)} is
+\[
+  \begin{pmatrix}0&-\tfrac{65}{24}&-\tfrac{11}{24}\\
+  \tfrac{65}{24}&0&-\tfrac7{12}\\ \tfrac{11}{24}&\tfrac7{12}&0\end{pmatrix},
+\]
+antisymmetric of rank $2$: so $\mathcal D_X$ is irreducible there. What is left for
+the threshold theorem in dimension three includes irreducibility of the
+regular base and control of the exceptional components, as made explicit
+in Proposition~\ref{prop:v6reduce}.
+\end{remark}
+
+\subsection{Which values of $k$ admit a metric example}
+
+Existence and \emph{metric} existence are different questions, and it is the second
+one that has structure. Call a $k$-reflective projective billiard \emph{metric} if it
+preserves a definite conic; by Proposition~\ref{prop:law} that is the same as being
+the metric billiard of the corresponding round projective metric; its
+spherical lift is round by the positive definite Cayley--Klein construction.
+
+Three facts, of which the first two are new here and the third is
+Theorem~\ref{thm:rigidend} read correctly.
+
+\begin{proposition}[$k=m$: metric, and unique]\label{prop:kmunique}
+Let $k=m=n+1$, suppose the configuration is metric, and suppose its lifted
+product is $-I_m$. Then the normals are
+pairwise orthogonal, so the configuration is the orthant bounded by $m$ mutually
+orthogonal mirrors, unique up to isometry. It is realised for every $n$.
+\end{proposition}
+
+\begin{proof}
+Conjugate the definite form to the Euclidean inner product and argue by
+induction on $m$, with $m=1$ immediate. Multiplication of the product relation
+on the right by $H_0$ gives $H_{m-1}\cdots H_1=-H_0$. Telescoping shows
+\[
+ \operatorname{im}(-H_0-I)\subset
+ \operatorname{span}(n_1,\ldots,n_{m-1}).
+\]
+For this inclusion, use
+$A_r\cdots A_1-I=(A_r-I)A_{r-1}\cdots A_1+(A_{r-1}\cdots A_1-I)$,
+so every summand has image in one of the displayed normal lines.
+The left side equals $n_0^\perp$ and has dimension $m-1$, so the two spaces
+are equal. Thus every other normal is orthogonal to $n_0$. Restriction to
+$n_0^\perp$ gives a product of $m-1$ reflections equal to $-I$ there;
+the induction hypothesis finishes the proof. For the
+realisation take $H_i=I-2e_ie_i^{\ast}$ on the simplex $\{x_i>0\}$, with transversal
+field on the facet $x_i=0$ the pencil through the opposite vertex $[e_i]$: the
+homologies commute, their product is $-I$, and the line
+$f(s,t)=(s-\lambda_0t,\dots,s-\lambda_nt)$ with $\lambda_0>\dots>\lambda_n>0$ crosses
+the facets one at a time, in strict order, with all other coordinates on the correct
+side of the orthant after folding.
+\end{proof}
+
+For $n=2$ this is the classification of $3$-reflective spherical billiards by three
+orthogonal great circles \cite{bknz}; the proposition is its extension to every
+dimension, and the point is not the construction but the uniqueness, which comes for
+free from saturation of the rank bound.
+
+\begin{proposition}[Common centre kills every nondegenerate conic]\label{prop:commoncentre}
+A configuration of harmonic homologies with a common centre $O$ and at least two
+distinct axes preserves no nondegenerate quadric.
+\end{proposition}
+
+\begin{proof}
+If $S$ is invariant and nondegenerate, each $H_i$ is an involution preserving $S$, so
+its $+1$ and $-1$ eigenspaces are $S$-orthogonal. The $-1$ eigenspace is
+$\langle O\rangle$ and the $+1$ eigenspace is $\ker L_i$, so $SO\in\langle
+L_i\rangle$. As $S$ is nondegenerate and $O\neq0$ we have $SO\neq0$, hence
+$L_i\propto SO$ for every $i$ and all the axes coincide.
+\end{proof}
+
+\begin{corollary}[The rigid end is not empty; it is empty of metric billiards]
+\label{cor:rigidnotempty}
+Theorem~\ref{thm:rigidend} says there is no metric $k$-reflective billiard with
+$k=m+1$. It does not say the value $k=m+1$ is unattainable: centrally projective
+configurations, all of whose centres coincide, realise it, and by
+Proposition~\ref{prop:commoncentre} they preserve no nondegenerate conic at all. So
+at the rigid end the absence of an invariant conic is not a choice of construction:
+it is forced.
+\end{corollary}
+
+\begin{remark}[The metric table]\label{rem:metrictable}
+Collecting, with $m=n+1$:
+\[
+\begin{array}{lll}
+ k=m   & \text{metric with product }-I\text{, and then unique} &
+ \text{Proposition~\ref{prop:kmunique}}\\
+ k=m+1 & \text{never metric} & \text{Theorem~\ref{thm:rigidend}, Corollary~\ref{cor:rigidnotempty}}\\
+ k=m+2 & \text{metric examples exist} & \text{Section~\ref{sec:higher}}\\
+ k\ge m+3 & \text{not classified here} & \text{}
+\end{array}
+\]
+The determinant condition for a metric configuration with product $-I$ is
+$k\equiv m\pmod 2$. Beyond the values proved in this paper, the existence of
+metric examples is left open here. The displayed finite computations are checked
+over $\mathbb{Q}$ by
+\path{verificadores/simplex_ortogonal.py} and
+\path{verificadores/extremo_rigido_no_metrico.py}.
+\end{remark}
+
+\subsection{Why four, in any simply-laced system}
+
+Theorem~\ref{thm:bmstops} was proved by counting transitive factorisations in $S_m$,
+which is unavailable outside $B_m$ and $D_m$. The bound has a shorter and more
+general reason, and it explains where the number four comes from.
+
+\begin{lemma}[Four blocks at most]\label{lem:fourblocks}
+Let $\{r_1,\dots,r_m\}$ be an orthogonal set of roots of a simply-laced system,
+normalised to $|r_i|^2=2$, and let $a$ be another root. Then
+$\sum_i\langle a,r_i\rangle^2=4$, and since the lattice is integral at most
+\textbf{four} of the products are nonzero.
+\end{lemma}
+
+\begin{proof}
+Write $a=\sum c_ir_i$ with $c_i=\langle a,r_i\rangle/2$. Then
+$2=|a|^2=\sum c_i^2|r_i|^2=\tfrac12\sum\langle a,r_i\rangle^2$.
+\end{proof}
+
+\begin{corollary}\label{cor:fourblocks}
+If a reflection group is generated by an orthogonal set of $m$ roots together with
+one further root, the number of irreducible blocks satisfies $s\ge m-3$; so it acts
+irreducibly only if $m\le4$.
+\end{corollary}
+
+The count is sharp and visible in the root systems: with respect to a maximal
+orthogonal set, no root of $E_7$ or of $E_8$ meets all the blocks, while in $D_4$
+sixteen of the twenty-four roots do. That is why rank four is the last one where an
+irreducible threshold word can occur, and it is the same four as in
+Theorem~\ref{thm:bmstops} --- there it looked like a fact about signed permutations,
+and it is really a fact about $|r|^2=2$. Checked over $\mathbb{Z}$ by
+\path{verificadores/cuatro_bloques.py}.
+
+\subsection{The equation $\det(N-A)=0$, in any dimension --- and why it stops}
+
+In vector rank three, $\det(N-A)=0$ becomes $bw_2=cw_3$ in an eigenbasis of
+$A$, a bidegree $(1,1)$ equation with coefficient matrix of rank $2$. The general
+formula below shows why this condition becomes identically zero in vector rank four.
+
+\begin{lemma}\label{lem:EA}
+Let $A\in\PGL_m$, $c=\pm1$, and $N=c\bigl(2w\tilde w/s-I\bigr)$ with $s=\tilde ww$.
+Put $C=cI+A$. Then
+\[
+  \det(N-A)=0\iff \tilde w\,E_A\,w=0,\qquad
+  \boxed{\,E_A:=\det(C)\,I-2c\operatorname{adj}(C)\,}
+\]
+So $\mathcal C_A=\{N:\det(N-A)=0\}$ is a bidegree $(1,1)$ hypersurface in
+$\RP^{m-1}\times\RP^{m-1}$, irreducible of dimension $2(m-1)-1$ as soon as
+$\rk E_A\ge2$. When $C$ is invertible, $\operatorname{adj}C=\det(C)C^{-1}$, so
+$E_A=\det(C)\bigl(I-2cC^{-1}\bigr)$ and $\rk E_A=\rk(A-cI)$.
+\end{lemma}
+
+\begin{proof}
+$N-A=-C+\tfrac{2c}{s}w\tilde w$, and $\det(C-t\,w\tilde w)=\det C-t\,\tilde
+w\operatorname{adj}(C)w$ for any $C$, invertible or not. Multiply by $s$.
+\end{proof}
+
+\begin{corollary}
+For $m=3$ and $c=+1$ --- the case of $V_5$ --- with $A$ regular semisimple of
+eigenvalues $1,\lambda,\lambda^{-1}$, $C=I+A$ is invertible and in that eigenbasis
+$E_A$ is proportional to $\operatorname{diag}(0,1,-1)$, so $\tilde wE_Aw=0$ is
+$bw_2=cw_3$ and $\rk E_A=2$.  The involution-chart lemma of
+This recovers the rank-three equation directly.
+\end{corollary}
+
+\begin{proposition}[Why it stops at $m=4$]\label{prop:stops}
+For $m=4$ and $c=-1$ --- the case of $V_6$ --- one has $C=A-I$, and $A\in\mathcal P$
+forces $\rk(A-I)\le2=m-2$. The adjugate of a matrix of corank $\ge2$ vanishes, and
+so does its determinant. Hence
+\[
+  E_A=0\quad\text{identically,}
+\]
+and the condition $\det(N-A)=0$ is \textbf{automatic}: it carries no information.
+\end{proposition}
+
+\begin{remark}[Where this leaves the threshold in dimension three]\label{rem:whereleft}
+Consequently the fibration modelled on the $V_5$ proof does not close. Its stages
+would be $A\in\mathcal P$ ($11$), $N\in c\,\mathrm{Inv}$ with no condition by
+Proposition~\ref{prop:stops} ($6$), $H_4\in\mathcal D_Y$ ($3$ by
+Proposition~\ref{prop:11hyp}), and the two factorisations ($1+1$): total $22$,
+whereas the submersive examples have local dimension $21$. This parameter
+count therefore cannot describe a neighbourhood of those examples with
+independent parameters of the stated dimensions. The missing compatibility
+or fibre constraint is \emph{not} $\det(N-A)=0$; identifying it, and controlling
+exceptional components, remain open.
+
+So: irreducibility of $V_6$ is \textbf{not} proved, and neither is the threshold
+theorem in dimension three. What is proved unconditionally is
+Proposition~\ref{prop:rp3}: the component of $V_6$ through the explicit rational
+point is contained in $S_6$, so every configuration on \emph{that} component
+preserves a quadric. What is new here is the dimension-free
+Lemma~\ref{lem:EA}, which explains where $bw_2=cw_3$ came from, and
+Proposition~\ref{prop:stops}, which turns ``the mechanism does not seem to
+generalise'' into a theorem about why: in $\mathbb{RP}^3$ the matrix $A-I$ is forced
+to have corank two, and adjugates of such matrices vanish.
+\end{remark}
+\section*{Reproducibility and computational disclosure}
+Every displayed rational polytope has an accompanying exact-arithmetic certificate
+for scalar monodromy, boundedness, genuine facets, strict first impacts, closure and
+primitivity. Floating-point exploration is not used in any proof. Research and manuscript development for all three papers used AI assistance from early
+July through late August 2026 (approximate). The models used were OpenAI's GPT-6 Astra,
+GPT-5.6 Sol, and GPT-5.6 Luna, and Anthropic's Fable 5 and Opus 5, accessed through
+ChatGPT Work, ChatGPT Codex, and Claude Code. No API was used. The assistance supported
+research, manuscript drafting, development and checking of verification scripts, and revision.
+Jorge Lucas Gonz\'alez reviewed the manuscripts and assumes full responsibility; no AI
+system is an author.
+\section*{Conclusion}
+The paper establishes the parity obstruction, the general rank lower bound,
+and a collection of exact higher-dimensional polytope constructions.  It also
+separates the proved threshold statements from the irreducibility problem that
+remains open in projective three-space.  The examples and their exact
+certificates are therefore reusable independently of that unresolved step.
+\par\medskip
+\noindent\textbf{Competing interests:} The author declares none.
+\par\medskip
+\begin{thebibliography}{99}
+\bibitem{opb} M.~Bialy, C.~Fierobe, A.~Glutsyuk, M.~Levi, M.~Plakhov and
+S.~Tabachnikov, \emph{Open Problems on Billiards and Geometric Optics},
+Arnold Math. J. \textbf{8}(3--4) (2022), 411--422,
+\href{https://doi.org/10.1007/s40598-022-00198-y}{doi:10.1007/s40598-022-00198-y}.
+\bibitem{bknz} V.~Blumen, K.~Y.~Kim, J.~Nance and V.~Zharnitsky,
+\emph{Three-period orbits in billiards on the surfaces of constant curvature},
+Int. Math. Res. Not. (2012), 5014--5024,
+\href{https://doi.org/10.1093/imrn/rnr228}{doi:10.1093/imrn/rnr228}.
+\bibitem{cb-icm} W.~Crawley-Boevey, \emph{Quiver algebras, weighted projective
+lines, and the Deligne--Simpson problem}, Proc. ICM Madrid 2006, vol.~II,
+117--129.
+\bibitem{fie-ex} C.~Fierobe, \emph{Examples of projective billiards with open
+sets of periodic orbits}, Discrete Contin. Dyn. Syst. \textbf{44} (2024),
+3287--3301, \href{https://doi.org/10.3934/dcds.2024059}{doi:10.3934/dcds.2024059}.
+\bibitem{fie-tri} C.~Fierobe, \emph{On projective billiards with open subsets
+of triangular orbits}, Israel J. Math. \textbf{267} (2025), 501--548,
+\href{https://doi.org/10.1007/s11856-024-02712-z}{doi:10.1007/s11856-024-02712-z};
+\href{https://arxiv.org/abs/2005.02012}{arXiv:2005.02012}.
+\bibitem{fie-caustics} C.~Fierobe, \emph{Only quadrics have pseudo-caustics ---
+on caustics of Riemannian, pseudo-Euclidean and projective billiards in higher
+dimensions}, Math. Z. \textbf{312} (2026), Art. 67,
+\href{https://doi.org/10.1007/s00209-026-03939-3}{doi:10.1007/s00209-026-03939-3};
+\href{https://arxiv.org/abs/2306.06757}{arXiv:2306.06757}.
+\bibitem{heidari-honari} F.~Heidari and B.~Honari, \emph{The three harmonic
+homologies theorem}, Expo. Math. \textbf{42} (2024), 125544,
+\href{https://doi.org/10.1016/j.exmath.2024.125544}{doi:10.1016/j.exmath.2024.125544}.
+\bibitem{tab} S.~Tabachnikov, \emph{Introducing projective billiards},
+Ergodic Theory Dynam. Systems \textbf{17} (1997), 957--976,
+\href{https://doi.org/10.1017/S0143385797086239}{doi:10.1017/S0143385797086239}.
+\end{thebibliography}
+\end{document}

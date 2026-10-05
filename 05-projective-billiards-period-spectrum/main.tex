@@ -1,0 +1,1150 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=2.8cm]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=blue,urlcolor=blue}
+\emergencystretch=2em
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\RP}{\mathbb{RP}}
+\newcommand{\PGL}{\mathrm{PGL}}
+\newcommand{\rk}{\operatorname{rank}}
+\newcommand{\tr}{\operatorname{tr}}
+\title{The period spectrum of reflective projective billiards:\\
+joins, suspensions, and metric obstructions}
+\author{Jorge Lucas Gonz\'alez\thanks{Email: jorge.lucas.glez@gmail.com}\\
+\small Independent researcher}
+\date{August 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We determine the complete period spectrum of bounded polyhedral projective
+billiards with central facet fields with an open set of primitive periodic trajectories, under the natural
+convention that the witness visits all facets. The proof combines projective
+joins, rank-one suspensions, and a parity lift of planar centrally projective
+billiards. In projective dimension $n$, every period $k\ge n+1$ occurs when $n$
+is even, while for odd $n$ exactly the even periods $k\ge n+1$ occur. Metric
+examples exist for every pair $k=m+2q$, and positive metric monodromy requires
+$k\ge2m$. Thus metric existence is completely determined in odd projective
+dimension, and the only remaining branch has odd vector rank, positive monodromy
+and even period at least twice the rank.
+\end{abstract}
+
+\noindent\textbf{Keywords.} Projective billiards; periodic trajectories; convex
+polytopes; joins; reflection factorizations; spherical billiards.
+
+\medskip
+\noindent\textbf{2020 Mathematics Subject Classification.}
+37C83, 51N15, 52B11, 20F55.
+
+\section{Introduction}
+Projective billiards were introduced by Tabachnikov \cite{tab}.  Such a billiard
+is \emph{$k$-reflective} when its billiard map has an open set of $k$-periodic
+points; Fierobe \cite{fie-ex} gave the first examples, of period three and of
+every even period at least four, and Problem~1 of the 2022 problem collection
+\cite{opb} asks which further periods occur.  This paper proves the required cyclic constructions and determines the whole
+period spectrum.
+
+The basic closure condition for a polyhedral projective billiard is that the
+ordered product of its harmonic facet homologies be scalar. Algebraic closure is
+not sufficient: the mirrors must bound a proper convex domain and one developed
+line must cross the developed facets in strict order. The constructions below
+are designed to preserve all three requirements.
+
+The projective join combines negative-monodromy witnesses without losing
+boundedness or the one-turn property. A rank-one suspension raises dimension and
+period together, and a parity lift embeds a regular polygon as a planar section of
+a higher-dimensional polytope. These operations fill the entire period table.
+They also expose a sharper metric question, for which we prove a complete
+negative-monodromy ray and a sharp lower bound on positive monodromy.
+
+We recall the reflection model and openness criterion, and prove the cyclic atoms and all subsequent constructions here.
+
+For higher-dimensional geometric context, Fierobe's analysis of caustics is
+complementary to the polyhedral constructions here \cite{fie-caustics}.
+
+The main contributions of this paper are: the complete period spectrum under
+the explicit all-facets witness convention; join, suspension, and parity-lift
+constructions that realize the spectrum; and the metric classification that is
+proved for the negative-monodromy ray and constrained by the sharp positive
+monodromy bound.  The remaining odd-rank, positive-monodromy branch is stated
+as open rather than folded into the existence theorem.
+\section{Setting}\label{sec:setting}
+
+A \emph{projective billiard} \cite{tab} is a bounded convex polytope
+$\Omega\subset\mathbb{R}^n$ together with a \emph{transversal line field}
+assigning to each point in the relative interior of a facet of $\partial\Omega$
+a line $L(p)$ through $p$ not contained in the facet hyperplane; reflection is
+defined by requiring the incoming ray, the outgoing ray, the facet tangent and
+$L(p)$ to have cross ratio $-1$ in their impact pencil.
+
+Throughout this paper we restrict to \emph{central facet fields}: on each
+facet the transversal lines belong to the pencil through one fixed projective
+centre outside the supporting hyperplane. No reduction from arbitrary
+transversal fields to this class is asserted. Statements about the period
+spectrum use the stated convention on the facets visited by the witness.
+
+\begin{definition}[Fierobe \cite{fie-ex}]\label{def:krefl}
+$\Omega$ is \emph{$k$-reflective} if there are a $k$-periodic orbit
+$(p_1,\dots,p_k)$ and an \textbf{open} $U_1\times U_2\subset(\partial\Omega)^2$
+containing $(p_1,p_2)$ every point of which begins a $k$-periodic orbit.
+\end{definition}
+
+The open set is the whole content of the definition, and it is where the difficulty
+lives: exhibiting one periodic orbit is easy, exhibiting an open family of initial
+impact pairs is not.
+
+\subsection{Reflection as a harmonic homology}
+
+For a covector $L$ and a vector $O$ with $LO\neq0$ put $H=I-2\,OL/(LO)$. Then
+$H^2=I$, $HO=-O$, $Hx=x$ for $Lx=0$, and $\det H=-1$.
+
+\begin{proposition}\label{prop:law}
+Let $p$ lie on $L$, let $\tau\in\ker L\setminus\{0\}$ be a tangent direction, and
+put $\nu=O-p$. The involution induced by $H$
+on the pencil at $p$ sends $a\tau+b\nu$ to $a\tau-b\nu$; hence the cross ratio of
+(incoming, outgoing; tangent, transversal) is $-1$. So reflection in the side with
+transversal field the pencil through $O$ \emph{is} the harmonic homology with axis
+the facet hyperplane and centre $O$.
+\end{proposition}
+
+\begin{proof}
+$H$ fixes $p$ and is an involution, so induces an involution of the pencil at $p$
+fixing the two distinct lines $\mathbb{R}\tau$ and $pO$; in the coordinate taking them to $0$
+and $\infty$ it is $m\mapsto-m$. Parametrising by $(a:b)$ with direction
+$a\tau+b\nu$, the tangent is $(1:0)$, the transversal $(0:1)$, and with
+$[ij]=a_ib_j-a_jb_i$ the cross ratio of $(a:b),(a:-b),(1:0),(0:1)$ is
+$[13][24]/([14][23])=-1$.
+\end{proof}
+
+Consequently, if $H_{j_k}\cdots H_{j_1}$ is scalar then \emph{every} line returns to
+itself after the corresponding $k$ reflections. The converse is false: an isolated
+trajectory may well close without the product being scalar, and it is precisely the
+scalar case that produces an \emph{open set} of closed trajectories, which is what
+Definition~\ref{def:krefl} demands. If the product is $cI$, determinants give
+$c^{n+1}=(-1)^k$. For odd projective dimension $n$, the left side is positive,
+so $k$ must be even. For even $n$, the real scalar is $c=(-1)^k$ and
+determinants give no additional obstruction.
+For the central fields considered here, an open family also forces scalar
+monodromy. The initial lines of a regular family form an open subset of the
+Grassmannian of projective lines. Their invariance under the fixed product
+is an algebraic incidence condition; vanishing on an open subset forces
+it on the entire Grassmannian. A linear map preserving every two-dimensional
+vector subspace preserves every one-dimensional subspace, obtained as an
+intersection of such subspaces in vector dimension at least three.
+Applying this to basis vectors and their pairwise sums shows that the map
+is scalar. This necessity concerns an open family; an isolated closed orbit
+does not suffice.
+
+\section{An openness criterion}
+
+Everything below rests on this; it assumes no symmetry.
+
+\begin{lemma}[Exit map]\label{lem:exit}
+Let $\Omega$ be a convex polytope, $p$ in the relative interior of a facet, $w$ pointing into
+$\Omega$. The ray $p+sw$, $s>0$, meets $\partial\Omega$ in exactly one point $E(p,w)$, and
+$E$ is continuous wherever $E(p,w)$ lies in the relative interior of a facet.
+\end{lemma}
+
+\begin{proof}
+$\Omega$ is convex and bounded, so $s^\ast=\sup\{s>0:p+sw\in\Omega\}$ is finite and
+$E(p,w)=p+s^\ast w\in\partial\Omega$; uniqueness is convexity. If $E(p,w)$ is
+in the relative interior of a facet $F$ then $w$ is not parallel to its
+supporting hyperplane, so the intersection determinant is nonzero and Cramer's
+rule gives $s^\ast$ near $(p,w)$ as a quotient of polynomials with nonvanishing
+denominator. Since the relative interior of $F$ is open in $\partial\Omega$,
+nearby data still exit through $F$.
+\end{proof}
+
+\begin{remark}
+Requiring instead that the intersection determinants with \emph{every} supporting
+hyperplane be nonzero fails: $\det=0$ is not an open condition, so such an argument has
+a gap. This is why the exit map is isolated.
+\end{remark}
+
+\begin{theorem}[Openness criterion]\label{thm:open}
+Let $\Omega$ be a convex polytope with facets $F_0,\dots,F_{k-1}$ and transversal
+field on $F_i$ the pencil through $O_i$, with $L_iO_i\neq0$. Assume
+\textup{(H1)} $H_{k-1}\cdots H_0=cI$, $c\neq0$; \textup{(H2)} there is an orbit
+with itinerary $0,1,\dots,k-1$ whose impacts are strictly interior to their facets,
+with strictly positive step parameters, each losing facet excluded by a strict
+inequality and nonvanishing transversality at each impact; \textup{(H3)} the return
+direction is $u_k=\kappa u_0$ with $\kappa>0$. Then $\Omega$ is $k$-reflective; if
+the $k$ impacts lie on distinct facets the period is primitive.
+\end{theorem}
+
+\begin{proof}
+Each step is a line--line intersection followed by a reflection, so the impact
+parameters and directions are rational functions of the initial data, with
+denominators nonvanishing at the witness by (H2); the vanishing locus being closed,
+they are defined and continuous nearby. The finitely many strict inequalities of
+(H2) persist, and by Lemma~\ref{lem:exit} each of the $k$ exit maps is continuous
+with value in the relative interior of a facet, which is open in $\partial\Omega$; composing,
+the itinerary is unchanged for nearby data. By (H1) the product is the identity of
+$\PGL_{n+1}$, so \emph{every} line returns to itself: $\ell_k=\ell_0$ as an unoriented
+line, and since $\ell_0$ is not the supporting hyperplane of $F_0$ the intersection
+$\ell_0\cap F_0$ is a single point, whence $p_k=p_0$. For the orientation, (H1)
+only gives $u_k=\kappa u_0$ with $\kappa$ real nonzero --- neither $\pm1$ nor a
+priori locally constant --- but $\kappa=(u_k\cdot u_0)/(u_0\cdot u_0)$ is
+continuous and nonvanishing and equals a positive number at the witness by (H3), so
+$\kappa>0$ on a smaller neighbourhood. Finally, a proper period $d\mid k$, $0<d<k$,
+would force $p_d=p_0$; but $p_d$ lies on facet $F_d$ and $p_0$ on $F_0$, which are
+distinct facets, and the impacts are interior to them, so $p_d\neq p_0$.
+\end{proof}
+
+Hypotheses (H2)--(H3) are finitely many strict inequalities and (H1) one identity,
+so they can be certified exactly for explicit data.  We use this repeatedly
+below.
+\section{The minimal negative-monodromy atom}
+
+\begin{theorem}[The opposite-vertex simplex]\label{thm:opposite-simplex}
+For every $n\ge2$, every projective $n$-simplex admits a projective billiard
+which is $(n+1)$-reflective with primitive period $n+1$.  On each facet, take as
+transversal field the pencil of lines through the opposite vertex.  In fact, for
+each ordering of the $n+1$ facets there is a strict periodic witness with that
+itinerary.
+\end{theorem}
+
+\begin{proof}
+By projective invariance it is enough to use the standard simplex.  Let
+$V=\mathbb R^{n+1}$ with basis $e_0,\ldots,e_n$, let
+\[
+ C=\{x=(x_0,\ldots,x_n):x_i>0\text{ for every }i\},
+ \qquad \Delta=\mathbb P(C),
+\]
+and use the bounded affine section $\sum_i x_i=1$.  The facet $A_i$ has equation
+$x_i=0$ and its opposite vertex is $E_i=[e_i]$.  The harmonic homology with axis
+$A_i$ and centre $E_i$ is
+\[
+ H_i=I-2e_i e_i^*,
+\]
+so it changes the sign of the $i$-th coordinate and fixes all the others.  Hence
+the homologies commute and
+\[
+             H_nH_{n-1}\cdots H_0=-I_V.                 \tag{1}
+\]
+
+It remains only to certify a strict itinerary.  Choose real numbers
+\[
+        \lambda_0>\lambda_1>\cdots>\lambda_n>0
+\]
+and define a linear injection $f:\mathbb R^2\to V$ by
+\[
+        f(s,t)=(s-\lambda_0t,\ldots,s-\lambda_nt).
+\]
+Along the oriented half-circle $(s,t)=(\cos\theta,\sin\theta)$,
+$0\le\theta\le\pi$, coordinate $i$ vanishes once, at
+\[
+        \theta_i=\arctan(1/\lambda_i),
+\]
+and
+$0<\theta_0<\theta_1<\cdots<\theta_n<\pi/2$.  Thus the developed projective
+line passes successively through the chambers
+\[
+ C,\quad H_0C,\quad H_1H_0C,\quad\ldots,\quad
+ H_n\cdots H_0C=-C.
+\]
+Between two successive crossings every coordinate has the strict sign prescribed
+by the current chamber.  At the $i$-th crossing exactly one coordinate vanishes,
+so the point lies in the relative interior of the developed copy of $A_i$ and the
+crossing is transverse.  Consequently the folded ray has $A_i$ as its unique first
+hit at every step; all admissibility conditions are strict.
+
+The half-circle ends at $(-1,0)$, and $f(-1,0)=-f(1,0)$.  Combining this with
+(1), folding returns the endpoint and the oriented tangent to their initial values
+with positive multiplier.  The openness criterion therefore supplies an open set
+of $(n+1)$-periodic trajectories.  Since all $n+1$ facets are distinct, the period
+is primitive.  Permuting the coordinates gives any desired facet ordering.
+\end{proof}
+
+\begin{remark}
+For $n=2$ this is precisely the right-spherical triangle: every transversal on a
+side passes through the opposite vertex.  The proof shows that the natural object
+in arbitrary dimension is the projectivisation of the all-right spherical orthant.
+It attains the general rank lower bound $k\ge n+1$ exactly.
+\end{remark}
+
+\section{Joins, suspensions and filled regions}
+
+\begin{theorem}[Join construction]\label{thm:join}
+For $r=1,2$, let $V_r$ be a real vector space, let $C_r\subset V_r$ be an open
+pointed polyhedral cone whose projectivisation $\Omega_r=\mathbb P(C_r)$ is a
+bounded convex polytope, and let
+\[
+ H^{(r)}_0,\ldots,H^{(r)}_{k_r-1}\in\mathrm{GL}(V_r)
+\]
+be the harmonic homologies of a strict billiard orbit, in itinerary order. Assume
+that their product is $-I_{V_r}$ and that the developed orbit goes from a lift $p_r$
+to $-p_r$ while traversing its projective line exactly once.  Then the projective
+join
+\[
+ \Omega_1*\Omega_2:=\mathbb P(C_1\oplus C_2)
+       \subset\mathbb P(V_1\oplus V_2)
+\]
+with the block homologies
+\[
+ H^{(1)}_a\oplus I_{V_2}\quad(0\le a<k_1),\qquad
+ I_{V_1}\oplus H^{(2)}_b\quad(0\le b<k_2)
+\]
+is $(k_1+k_2)$-reflective.  Its dimension is
+$\dim\Omega_1+\dim\Omega_2+1$ and it has $k_1+k_2$ facets.  If each factor orbit
+visits distinct facets, the resulting period is primitive.  Moreover, the
+constructed witness also traverses its developed projective line exactly once, so
+the construction may be iterated.
+\end{theorem}
+
+\begin{proof}
+Boundedness is immediate at the level of cones.  Choose linear forms $\ell_r$ that
+are positive on $\overline C_r\setminus\{0\}$.  Then
+$\ell_1\oplus\ell_2$ is positive on
+$\overline{C_1\oplus C_2}\setminus\{0\}$, and its level-one section is compact.
+The facets of $C_1\oplus C_2$ are precisely
+$F^{(1)}_a\oplus C_2$ and $C_1\oplus F^{(2)}_b$.  Moreover, if
+$H=I-2O L/(LO)$ is a factor homology, then
+\[
+ H\oplus I=I-2(O,0)(L,0)/(LO),
+\]
+so the displayed block maps give exactly the harmonic reflection laws on these
+facets.  Their product, in the concatenated order, is
+$(-I_{V_1})\oplus(-I_{V_2})=-I_{V_1\oplus V_2}$.
+
+It remains to produce the strict itinerary; this is the only non-formal point.
+Unfold the two given witnesses.  Thus there are two-dimensional spaces $E_r$,
+linear injections $f_r:E_r\to V_r$, and oriented half-circles from $e_r$ to $-e_r$
+in $E_r\setminus\{0\}$ whose projectivisations cross, in order, the developed
+facets of the successive cones
+\[
+ C_r,\quad G^{(r)}_1C_r,\quad\ldots,\quad
+ G^{(r)}_{k_r}C_r=-C_r,
+\]
+where $G^{(r)}_a$ is the appropriate prefix product.  Strictness says that between
+two consecutive crossings the developed line lies in the interior of the
+corresponding cone, and at a crossing it lies in the relative interior of just the
+prescribed facet.
+
+Use the first developed projective line as parameter circle.  After its last
+crossing choose a closed interval $J$ strictly inside its final chamber interval
+$-C_1$.  On the second parameter circle choose the complementary cut inside its
+initial/final chamber, so that the compact arc $K$ contains all its facet crossings.
+The action of $\mathrm{PGL}_2(\mathbb R)$ on the projective line is triply
+transitive: there is an orientation-preserving projectivity
+$\psi:\mathbb P(E_1)\to\mathbb P(E_2)$ which sends the common starting parameter to
+the second starting parameter and sends the two endpoints of $J$ to the two
+endpoints of $K$.  Consequently every second-factor crossing has its preimage in
+$J$, in the original order.  Before $J$ the second component remains strictly in
+$C_2$; throughout $J$ the first component remains strictly in $-C_1$.
+
+Let $A:E_1\to E_2$ induce $\psi$, choosing its overall sign so that the initial
+lifts lie in $C_1$ and $C_2$, and put
+\[
+       F(e)=f_1(e)\oplus f_2(Ae).
+\]
+The projective line $\mathbb P(F(E_1))$ first crosses all developed facets of the
+first factor and then all those of the second.  Between crossings both components
+lie strictly in their current developed cones, hence their direct sum lies strictly
+in the corresponding developed join.  At a first-factor crossing the first
+component lies in the relative interior of its prescribed facet and the second is
+interior, and conversely for a second-factor crossing.  Thus every prescribed facet
+is the unique first hit: this gives all the strict inequalities and transversalities
+in \textup{(H2)}.
+
+Finally the common half-circle ends at $-e$.  Since $F(-e)=-F(e)$ and the total
+prefix is $-I$, folding sends the endpoint back to the starting point and sends the
+terminal oriented tangent to the initial oriented tangent with positive multiplier.
+This is \textup{(H3)}.  The openness criterion now gives an open set of
+$(k_1+k_2)$-periodic orbits.  If the factor facets are all distinct, so are the join
+facets, and the period is primitive.  Since the parameter runs along the same
+oriented half-circle from $e$ to $-e$ without a second turn, the output witness has
+the one-turn property claimed in the statement.  More explicitly, the quotient
+of that half-circle obtained by identifying its endpoints is mapped
+homeomorphically onto $\mathbb P(E_1)$, and the linear injection $F$ induces a
+projective isomorphism $\mathbb P(E_1)\to\mathbb P(F(E_1))$.  Hence the developed
+line has degree one, not merely odd degree; no metric length estimate or chord
+budget is involved.
+\end{proof}
+
+\begin{proposition}[Rank-one suspension]
+\label{prop:rank-one-suspension}
+Let a strict one-turn witness in $\mathbb P(V)$ have period $k$ and product
+$-I_V$.  Then the pyramid over its domain in $\mathbb P(V\oplus\mathbb R)$ has a
+strict one-turn witness of primitive period $k+1$ and product
+$-I_{V\oplus\mathbb R}$.  Thus
+\[
+                         (n,k)\longmapsto(n+1,k+1).
+\]
+The old lifted mirror group embeds in the new one.
+\end{proposition}
+
+\begin{proof}
+Write the old developed lift as $f(e)$ along an oriented half-circle from $e_0$
+to $-e_0$.  Choose a nonzero linear form $h$ on the two-dimensional parameter
+plane whose unique zero on that half-circle occurs strictly after the last old
+facet crossing and before the endpoint.  Choose its sign so that $h(e_0)>0$.
+Then
+\[
+                         F(e)=f(e)\oplus h(e)
+\]
+starts in $C\oplus\mathbb R_{>0}$.  During every old crossing the last component
+is positive.  After the last one, the old component lies strictly in $-C$; when
+$h$ vanishes, $F(e)$ crosses the new base facet in its relative interior and
+then lies in $-C\oplus\mathbb R_{<0}=-(C\oplus\mathbb R_{>0})$.
+
+The old reflections lift as $H_i\oplus1$, and the new base reflection is
+$J=I_V\oplus(-1)$.  Hence the total product in itinerary order is
+\[
+        J\bigl((-I_V)\oplus1\bigr)=-I_{V\oplus\mathbb R}.
+\]
+All crossings are strict, $F$ is injective, and the same parameter half-circle
+has degree one on $\mathbb P(F(E))$, so closure, positive tangent return, and the
+one-turn property follow exactly as in Theorem~\ref{thm:join}.  The new base is
+distinct from all old facets, proving primitivity.  Finally, the maps
+$H_i\oplus1$ contain an isomorphic copy of the old lifted group.
+\end{proof}
+
+
+
+\begin{proposition}[Join construction for positive monodromy]
+\label{prop:join-positive}
+Assume instead that two strict factor witnesses have product $+I$ and that each
+developed lift makes exactly one full turn on its two-dimensional vector plane
+before returning to its initial vector.  Then the same block construction gives a
+strict $(k_1+k_2)$-reflective join with product $+I$.  The output witness again
+makes exactly one full vector turn, so this construction may also be iterated.
+\end{proposition}
+
+\begin{proof}
+Use oriented parameter circles $e_r(\theta)$, $0\le\theta\le2\pi$, for the two
+factor lifts $f_r(e_r(\theta))$.  Cut each circle at a parameter lying strictly
+inside a chamber interval and whose antipode is not a crossing; this is possible
+because the crossing sets are finite.  Choose an orientation-preserving linear
+isomorphism $A:E_1\to E_2$ which sends the first cut ray to the second with
+positive sign.  Among such maps, choose $A$ generically so that no crossing time
+of the first factor coincides with a crossing time of the reparametrized second
+factor.  This is possible because there are only finitely many forbidden
+equalities, each a proper condition on $A$.
+
+Put $F(e)=f_1(e)\oplus f_2(Ae)$ and order the union of the two crossing sets around
+the parameter circle.  Between two consecutive crossings each component lies in
+the interior of its current developed cone.  At a crossing exactly one component
+lies in the relative interior of its prescribed facet and the other remains
+interior.  Thus the direct sum has precisely the merged strict itinerary.  The
+block product is $I\oplus I=I$.  Since $e(2\pi)=e(0)$, both the endpoint and the
+oriented tangent return with positive multiplier.  Finally, $F$ is injective and
+maps one vector-circle turn to one vector-circle turn in $F(E_1)$, proving the
+iterability assertion.
+\end{proof}
+
+\begin{lemma}[Every even central polygon has one full turn]
+\label{lem:even-cyclic-full-turn}
+Let $p\ge4$ be even. The centrally projective billiard on the regular $p$-gon
+has product $+I_3$, and its midpoint witness makes exactly one full turn on its
+developed vector plane.
+\end{lemma}
+
+\begin{proof}
+Write $\alpha=\pi/p$, $v=\cos\alpha$, and
+$\phi_i=(2i+1)\alpha$. At the common-centre choice the reflections have the
+explicit form
+\begin{equation}\label{eq:even-central-H}
+ H_i(x,y,z)=\left(x,y,-z+\frac2v
+       (x\cos\phi_i+y\sin\phi_i)\right).
+\end{equation}
+The midpoint impacts are $M_i=(v\cos\phi_i,v\sin\phi_i,1)$. Let
+$G_i=H_{i-1}\cdots H_0$ and $X_i=G_i^{-1}M_i$. The first developed line is
+spanned by $X_0=M_0$ and $X_1=H_0M_1$, and direct substitution in
+\eqref{eq:even-central-H} puts both in
+\[
+                         E=\{z=x/v^2\}.
+\]
+Every prefix preserves $x,y$, and substitution gives
+\begin{equation}\label{eq:even-central-f}
+ X_i=(v\cos\phi_i,v\sin\phi_i,\cos\phi_i/v)
+     =f(\cos\phi_i,\sin\phi_i),\qquad
+ f(a,b)=(va,vb,a/v).
+\end{equation}
+Thus the oriented developed points run from angle $\alpha$ to
+$2\pi+\alpha$ in $p$ steps of size $2\alpha\in(0,\pi)$: exactly one full
+vector turn in $E$.
+
+For the product, put $a_i=(2/v)(\cos\phi_i,\sin\phi_i)$. Each $H_i$ has
+block form $\left(\begin{smallmatrix}I_2&0\\a_i^T&-1\end{smallmatrix}\right)$.
+Their product has diagonal blocks $I_2$ and $(-1)^p=1$; the remaining row is,
+up to overall sign, the alternating sum of the $a_i$. This sum vanishes because
+\[
+ \sum_{i=0}^{p-1}(-1)^i e^{\mathrm i\phi_i}
+ =e^{\mathrm i\alpha}\frac{1-(-e^{2\mathrm i\alpha})^p}
+                         {1+e^{2\mathrm i\alpha}}=0.
+\]
+Hence the product is $+I_3$.
+\end{proof}
+
+\begin{lemma}[A rational positive atom of rank four]
+\label{lem:rational-positive-cube}
+There is a strict primitive six-periodic projective billiard in a cube in
+$\mathbb {RP}^3$ whose canonical lifted product is $+I_4$, whose developed lift
+makes exactly one full vector turn, and whose mirror group is infinite.
+\end{lemma}
+
+\begin{proof}
+Use homogeneous coordinates $(x,y,z,t)$ and the cube
+\[
+ |x|<z,\qquad |y|<z,\qquad |t|<z.
+\]
+With the convention that the interior is $L_i<0$, take
+\[
+\begin{array}{lll}
+L_0=(1,0,-1,0),&L_1=(0,1,-1,0),&L_2=(-1,0,-1,0),\\
+L_3=(0,-1,-1,0),&L_4=(0,0,-1,1),&L_5=(0,0,-1,-1),
+\end{array}
+\]
+and centres
+\[
+ \begin{gathered}
+ O_i=(0,0,1,c_i)\quad(0\le i<4),\\
+ (c_0,c_1,c_2,c_3)=\frac15(-6,-1,4,9),\qquad
+ O_4=O_5=(0,0,0,1).
+ \end{gathered}
+\]
+Set $H_i=I-2O_iL_i/(L_iO_i)$.  Direct rational multiplication in the
+itinerary order $(1,2,3,4,5,0)$ gives
+\[
+                         H_0H_5H_4H_3H_2H_1=I_4.
+\]
+In the affine chart $z=1$, launch from
+\[
+ X=(2/5,3/10,1,-1/4),\qquad U=(-1/4,1/3,0,1/10).
+\]
+Exact ray tracing visits
+\[
+                         1,2,3,4,5,0,1
+\]
+with a unique positive first-hit time at every step and with every other facet
+inequality strict.  After six reflections both the point and the tangent return
+exactly, with tangent multiplier one.  Thus the openness criterion applies, and
+the six distinct facets make the period primitive.
+
+For completeness, in the basis $(X,U)$ of the developed plane the seven impact
+vectors are
+\[
+ \begin{gathered}
+ (1,21/10),\ (-5/2,0),\ (-2,-6/5),\ (-160/91,-118/91),\\
+ (40/91,-198/91),\ (1,-12/5),\ (1,21/10).
+ \end{gathered}
+\]
+Every consecutive determinant is positive.  Their quadrant pattern is
+$I$, negative axis, $III$, $III$, $IV$, $IV$, $I$; hence the developed lift
+makes exactly one, rather than several, positive vector turns.  Finally,
+$H_5H_4$ is a nonidentity unipotent with $(H_5H_4-I)^2=0$, so it has infinite
+order.  All these equalities and all strict inequalities are independently
+checked over $\mathbb Q$ by
+\texttt{verificadores/}\allowbreak\texttt{prism\_positive\_rp3.py}, which
+exits with code zero.
+\end{proof}
+
+\begin{lemma}[A rational positive atom of rank five]
+\label{lem:rational-positive-hypercube}
+There is a strict primitive eight-periodic projective billiard in a hypercube in
+$\mathbb {RP}^4$ with canonical lifted product $+I_5$, exactly one full vector
+turn, and infinite mirror group.
+\end{lemma}
+
+\begin{proof}
+Add a coordinate $s$ to the cube data of
+Lemma~\ref{lem:rational-positive-cube}.  For its six old facets and centres put
+\[
+ \begin{gathered}
+ \widehat L_i=(L_i,0),\qquad \widehat O_i=(O_i,d_i),\\
+ (d_0,\ldots,d_5)=\left(-3,-\frac{17}{10},-\frac25,
+                         \frac9{10},\frac3{10},\frac3{10}\right).
+ \end{gathered}
+\]
+Add the facets and centres
+\[
+ \widehat L_6=(0,0,-1,0,1),\quad
+ \widehat L_7=(0,0,-1,0,-1),\qquad
+ \widehat O_6=\widehat O_7=(0,0,0,0,1).
+\]
+They bound the hypercube $|x|,|y|,|t|,|s|<z$.  With
+$\widehat H_i=I-2\widehat O_i\widehat L_i/(\widehat L_i\widehat O_i)$,
+exact multiplication in itinerary order $(1,2,3,4,5,6,7,0)$ gives $+I_5$.
+The rational launch
+\[
+ X=(4/11,8/11,1,2/3,-8/15),\qquad
+ U=(-4/5,1/3,0,-2/15,1/2)
+\]
+has strict first-hit itinerary
+\[
+                         1,2,3,4,5,6,7,0,1
+\]
+and returns exactly with tangent multiplier one.  The eight successive
+determinants of its developed impact vectors are
+\[
+ \frac{117}{100},\ \frac{1771}{1180},\ \frac{50765}{441438},\
+ \frac{825}{1247},\ \frac{680845}{15679778},\ \frac{3300}{6287},\
+ \frac{455}{25148},\ \frac{71}{44};
+\]
+all are positive.  Their quadrant pattern
+$I,I,III,III,IV,IV,IV,IV,I$ certifies exactly one vector turn.  The two new
+cap reflections again have a nontrivial unipotent product.  The independent
+exact checker \texttt{verificadores/}\allowbreak
+\texttt{hypercube\_positive\_rp4.py} verifies every equality and strict
+inequality over $\mathbb Q$ and exits with code zero.
+\end{proof}
+
+\begin{theorem}[The central hypercube family]
+\label{thm:central-hypercube}
+For every even $n\ge2$, the projective $n$-cube admits a strict primitive open
+family of period $2n$ with canonical lifted product $+I_{n+1}$.  Its witness
+makes exactly one full vector turn and its mirror group is infinite.
+\end{theorem}
+
+\begin{proof}
+In homogeneous coordinates $(x_0,\ldots,x_{n-1},z)$ take
+\[
+ C=\{\,|x_j|<z:0\le j<n\,\},\qquad O=(0,\ldots,0,1),
+\]
+and give all facets the common centre $O$.  Their covectors are
+$L_{j,\sigma}=\sigma x_j^*-z^*$, $\sigma=\pm1$.  Order the facets cyclically as
+\[
+ L_{0,+},L_{1,+},\ldots,L_{n-1,+},
+ L_{0,-},L_{1,-},\ldots,L_{n-1,-}.
+\]
+Put $H_i=I-2OL_i/(L_iO)$.  Relative to
+$V=\ker z^*\oplus\mathbb RO$, every $H_i$ has block form
+\[
+                    H_i=\begin{pmatrix}I_n&0\\ b_i&-1\end{pmatrix}.
+\]
+For an even number of factors their product is identity precisely when the
+alternating sum of the rows $b_i$ vanishes.  Opposite facets have opposite rows
+and their positions differ by $n$.  Since $n$ is even, they have the same parity
+and cancel pairwise.  Hence the displayed word has product $+I_{n+1}$.
+
+It remains to realise the word dynamically.  Let $E$ be the affine two-plane
+through $O$ parametrised by
+\[
+ x_j=a\cos\frac{j\pi}{n}+b\sin\frac{j\pi}{n}\qquad(0\le j<n).
+\]
+Its section by the cube is
+\[
+ \left|a\cos\frac{j\pi}{n}+b\sin\frac{j\pi}{n}\right|<1
+ \qquad(0\le j<n),
+\]
+the regular $2n$-gon circumscribed about the unit circle.  Every $H_i$ preserves
+the homogeneous span of $E$, because it fixes its facet axis and its centre lies
+in $E$; its restriction is exactly the centrally projective reflection in the
+corresponding side of that regular polygon.  The midpoint witness of
+Lemma~\ref{lem:even-cyclic-full-turn} therefore visits the $2n$ cube facets in
+the displayed cyclic order.  Every impact is in the relative interior of its
+cube facet, since all other section inequalities are strict there.  The same
+lemma gives one full vector turn and positive return multiplier, so the openness
+criterion applies in the ambient dimension and the distinct facets make the
+period primitive.
+
+Finally, for two distinct facets the product of their common-centre homologies is
+a nonidentity unipotent of the form
+$\left(\begin{smallmatrix}I_n&0\\ b_j-b_i&1\end{smallmatrix}\right)$, hence has
+infinite order.
+\end{proof}
+
+\begin{corollary}[A positive-monodromy ray in ranks divisible by three]
+\label{cor:join-positive-ray}
+Let $r\ge1$ and $n=3r-1$.  For every even $k\ge4r$ there is a bounded convex
+projective billiard in $\mathbb R^n$ with a primitive open family of period $k$
+and canonical lifted product $+I_{n+1}$.  Its mirror group is infinite.
+\end{corollary}
+
+\begin{proof}
+Join $r$ even central planar atoms.  Take $r-1$ of period four and one of period
+$4+(k-4r)$, which is again even and at least four.  Their vector ranks add to
+$3r=n+1$, their periods add to $k$, and Proposition~\ref{prop:join-positive}
+supplies strictness, primitivity, closure, and one full turn.
+
+For infinitude, at $\lambda=0$ formula~\eqref{eq:even-central-H} writes each
+planar generator as
+\[
+ H_i=\begin{pmatrix}I_2&0\\ a_i^T&-1\end{pmatrix},
+ \qquad a_i=\frac2v(\cos\phi_i,\sin\phi_i).
+\]
+For $i\ne j$,
+\[
+ H_jH_i=\begin{pmatrix}I_2&0\\ (a_j-a_i)^T&1\end{pmatrix}
+\]
+is a nontrivial unipotent and therefore has infinite order.  Each joined group
+contains a factor group by Proposition~\ref{prop:join-infinite}, so it is infinite.
+\end{proof}
+
+\begin{proposition}[Infinite mirror groups survive joins]\label{prop:join-infinite}
+Use the involutive linear lifts of all factor homologies.  The lifted reflection
+group of either factor embeds in the projective mirror group of the join by
+\[
+              g\longmapsto [g\oplus I].
+\]
+Consequently, if either factor has infinite mirror group, then so does the join.
+\end{proposition}
+
+\begin{proof}
+Every generator $H^{(1)}_a\oplus I$ belongs to the joined group, so the displayed
+map is a homomorphism on the linear group generated by the chosen involutive lifts.
+If $g\oplus I$ is projectively scalar, say $g\oplus I=cI$, then its second block
+gives $c=1$ and its first block gives $g=I$.  Thus the map has trivial kernel.
+An infinite projective factor group has an infinite lifted group, proving the last
+claim.
+\end{proof}
+
+\begin{corollary}[Positive monodromy in the semigroup of ranks $3$ and $4$]
+\label{cor:positive-rank-semigroup}
+Put
+\[
+                    K(m)=2\left\lceil\frac{2m}{3}\right\rceil .
+\]
+For every $m\ge6$, rank $m$ admits an infinite-mirror-group positive-monodromy
+witness for every even period $k\ge K(m)$.  In addition, rank $3$ admits every
+even period at least $4$, rank $4$ admits period $6$, and rank $5$ admits period
+$8$.
+\end{corollary}
+
+\begin{proof}
+The positive atoms have rank and period $(3,p)$ for every even $p\ge4$ by
+Lemma~\ref{lem:even-cyclic-full-turn}, $(4,6)$ by
+Lemma~\ref{lem:rational-positive-cube}, and $(5,8)$ by
+Lemma~\ref{lem:rational-positive-hypercube}.  Apply
+Proposition~\ref{prop:join-positive}.  For $m\ge6$, according as its residue
+modulo three is $0,1,2$, use respectively only rank-three atoms, one rank-four
+atom, or one rank-five atom, filling the remaining rank with rank-three atoms.
+The base period is the least even integer not smaller than $4m/3$, namely
+$K(m)$, and every representation contains a planar atom.  Increasing that
+atom's period by an arbitrary even amount gives every even $k\ge K(m)$.  Each
+join contains an infinite factor group, so its mirror group remains infinite.
+\end{proof}
+
+
+
+\begin{lemma}[Every odd cyclic atom has one turn]
+\label{lem:odd-cyclic-one-turn}
+Let $p\ge3$ be odd and put $\alpha=\pi/p$, $u=\sin\alpha$,
+$v=\cos\alpha$, and $\phi_i=(2i+1)\alpha$. Define
+\[
+ \lambda=v(2v+1),\qquad Q=\operatorname{diag}(1,1,\lambda v),
+\]
+\[
+ O_i=(-\lambda\cos\phi_i,-\lambda\sin\phi_i,1)^T,\qquad
+ L_i=(-\cos\phi_i,-\sin\phi_i,v),\qquad
+ H_i=I-\frac{2O_iL_i}{\lambda+v}.
+\]
+Let $M_i=(v\cos\phi_i,v\sin\phi_i,1)^T$ be the midpoint impacts. The product
+of the $H_i$ is $-I_3$, and the midpoint witness unfolds from a lift $x$ to $-x$
+in exactly one turn.
+\end{lemma}
+
+\begin{proof}
+The form $Q$ is positive definite and $QO_i=\lambda L_i^T$, so each $H_i$ is a
+$Q$-reflection. Let $R$ be rotation by $2\alpha$ in the first two coordinates.
+Then $H_i=R^iH_0R^{-i}$ and $M_i=R^iM_0$. With $W=H_0R^{-1}$, direct
+multiplication gives
+\[
+ \operatorname{tr}W=\frac{\lambda+2v\cos(2\alpha)-v}{\lambda+v}=2v-1,
+ \qquad \det W=-1.
+\]
+An orthogonal map of a positive three-dimensional space with determinant $-1$
+has an eigenvalue $-1$. If its other two eigenvalues were real, the trace would be
+$1$ or $-3$; here $0\le 2v-1<1$, so they are a conjugate pair. The trace then
+gives $\cos\theta=v=\cos\alpha$, hence the eigenvalues are
+$-1,e^{i\alpha},e^{-i\alpha}$. The telescoping product identity
+\[
+ H_{p-1}\cdots H_0=R^{-1}W^pR
+\]
+therefore gives $H_{p-1}\cdots H_0=-I_3$. In particular, for
+$G_i=H_{i-1}\cdots H_0$ and $X_i=G_i^{-1}M_i$, one has $X_0=M_0$ and
+$X_p=-M_0$.
+
+Cyclic symmetry reduces the $Q$-angle of every developed segment to that between
+$M_0$ and $H_0M_1$. The point $M_0$ lies on the mirror $L_0$, so self-adjointness
+of $H_0$ gives
+\[
+ \langle M_0,H_0M_1\rangle_Q
+ =\langle H_0M_0,M_1\rangle_Q
+ =\langle M_0,M_1\rangle_Q.
+\]
+Using $M_0=(v^2,uv,1)$ and $M_1=(v\cos3\alpha,v\sin3\alpha,1)$ yields
+\[
+ \|M_0\|_Q^2=2v^2(v+1),\qquad
+ \langle M_0,M_1\rangle_Q=2v^3(v+1).
+\]
+Thus each developed arc has cosine $v=\cos\alpha$ and length $\alpha$. The
+original bounded polygon lies in an open affine hemisphere; unfolding by the
+$Q$-isometries keeps each segment in an open hemisphere, so these are the minor
+arcs. Their total length is $p\alpha=\pi$, the spherical distance between the
+antipodal endpoints $X_0$ and $X_p$. The path is therefore a minimizing
+semicircle and makes exactly one vector turn.
+\end{proof}
+
+
+
+\begin{corollary}[The full negative-monodromy ray]
+\label{cor:join-full-negative-ray}
+For every $n\ge2$ and every $q\ge0$ there is a bounded convex
+projective billiard in $\mathbb R^n$ with a primitive open family of period
+\begin{equation}\label{eq:full-negative-ray}
+                         k=n+1+2q.
+\end{equation}
+Thus, in every odd dimension $n\ge3$, every period allowed by the determinant
+and rank obstructions is attained.  In every even dimension $n\ge2$, every odd
+period at least $n+1$ is attained.
+\end{corollary}
+
+\begin{proof}
+Start with the planar atom of Lemma~\ref{lem:odd-cyclic-one-turn} having period
+$p=3+2q$.  Apply the rank-one suspension of
+Proposition~\ref{prop:rank-one-suspension} exactly $n-2$ times.  The resulting
+dimension is $n$ and the period is
+\[
+                    (3+2q)+(n-2)=n+1+2q.
+\]
+Every suspension preserves product $-I$, one turn, strictness, and primitivity.
+Finally, the general rank bound is $k\ge n+1$, while in odd dimension the
+determinant obstruction forces $k$ to be even; these are exactly the values in
+\eqref{eq:full-negative-ray}.
+\end{proof}
+
+
+
+\begin{remark}[Three independent exact certificates]
+The cases $(5,10)$, $(6,11)$ and $(9,14)$ have also been checked without appealing
+to the topological synchronisation argument.  The scripts
+\texttt{verificadores/join\_rp5.py}, \texttt{join\_rp6.py} and
+\texttt{join\_rp9.py} respectively certify over $\mathbb Q$ the scalar product,
+boundedness, all strict first-impact inequalities, relative-interior impacts,
+primitive period, exact closure and positive return multiplier $\kappa=1$.
+
+For example, in the $(9,14)$ case, on the parameter line of each copy of the
+rational $B_5$ witness, with coordinates $e=(a,b)$ and lift
+$f(a,b)=aX_0+bU_0$, take
+\[
+ A=\begin{pmatrix}-200&40000\\-1&100\end{pmatrix},
+ \qquad e_*=(1,1/100).
+\]
+Then $\det A=20000>0$ and $Ae_*=(200,0)$, so the joined line
+$F(e)=f(e)\oplus f(Ae)$ starts in the relative interior of the second copy of
+facet~$4$.  Exact rational ray tracing gives the fourteen first impacts
+\[
+5,6,0,1,2,3,4,\quad 5',6',0',1',2',3',4',
+\]
+all strict, and returns with $p_{14}=p_0$ and tangent multiplier $\kappa=1$.
+Every equality and inequality is certified over $\mathbb Q$ by
+\texttt{verificadores/join\_rp9.py}, which exits with code zero only if all checks
+pass.  Thus the existence of the $(9,14)$ example is independently secured even
+before using the join theorem inductively.
+\end{remark}
+
+\begin{remark}[Why the one-turn hypothesis is present]
+The relation $\prod H_i=-I$ by itself gives only
+$L\equiv\pi\pmod{2\pi}$ for a developed spherical orbit; it does not distinguish
+$\pi$ from $3\pi,5\pi,\ldots$.  The synchronisation above uses a single traversal
+of the parameter circle.  Thus Theorem~\ref{thm:join} does not claim that arbitrary
+negative-monodromy witnesses can be joined.  The short-branch hypothesis is an
+independent certified input in the corollary.
+\end{remark}
+
+\section{A parity lift and the complete existence table}
+\begin{proposition}[Central criterion]
+\label{prop:common-centre-product}
+Let a full-dimensional bounded affine $n$-polytope containing the origin have
+genuine facets
+\[
+                         N_i(w)<1\qquad(0\le i<k),
+\]
+and give every facet the transversal pencil through the origin.  If $k$ is even,
+the canonical lifted product in facet order is $+I_{n+1}$ if and only if
+\[
+                         \sum_{i=0}^{k-1}(-1)^iN_i=0.       \tag{1}
+\]
+If $k$ is odd the product is not scalar.  In particular, a bounded common-centre
+example with scalar product has $k\ge n+2$, and this bound is sharp whenever $k$
+is even.
+\end{proposition}
+
+\begin{proof}
+Homogenise with a coordinate $z$, put $O=(0,1)\in\mathbb R^n\oplus\mathbb Rz$,
+and write $L_i=N_i-z^*$.  Since $L_iO=-1$, the harmonic homology is
+\[
+ H_i=I-\frac{2OL_i}{L_iO}
+    =\begin{pmatrix}I_n&0\\2N_i&-1\end{pmatrix}.           \tag{2}
+\]
+Multiplying (2) shows that an even product has diagonal blocks $I_n,1$ and
+lower-left block equal, up to an irrelevant overall sign, to twice the alternating
+sum in (1).  An odd product has diagonal blocks $I_n,-1$ and hence cannot be
+scalar.  This proves the criterion.
+
+For the bound, boundedness implies that the $N_i$ span $(\mathbb R^n)^*$ and that
+they have a linear dependence with all coefficients positive.  Relation (1) is
+independent of that positive dependence, since its coefficients have both signs.
+Thus the nullity of the $n\times k$ normal matrix is at least two, so
+$k-n\ge2$.  Sharpness follows from Theorem~\ref{thm:parity-lift} below.
+\end{proof}
+
+\begin{theorem}[Parity lift of a central polygon]
+\label{thm:parity-lift}
+Let $n\ge2$ and let $k\ge n+2$ be even.  There is a bounded convex projective
+$n$-polytope with exactly $k$ facets and a strict primitive open family of
+$k$-periodic billiard trajectories.  Its canonical lifted mirror product is
+$+I_{n+1}$, its witness makes exactly one full vector turn, and its mirror group
+is infinite.
+\end{theorem}
+
+\begin{proof}
+Put $k=2r$ and consider the $(k-2)$-dimensional space
+\[
+ S=\left\{s\in\mathbb R^k:
+       \sum_{i\ \mathrm{even}}s_i=0,\quad
+       \sum_{i\ \mathrm{odd}}s_i=0\right\}.               \tag{3}
+\]
+Let $v_i=(\cos(2\pi i/k),\sin(2\pi i/k))$ and define
+\[
+ F:\mathbb R^2\longrightarrow S,\qquad F(q)_i=\langle v_i,q\rangle .
+\]
+Indeed $F(q)$ lies in $S$: the even $v_i$ form a centred regular $r$-gon, and
+the odd ones are its rotation by $2\pi/k$, so both parity sums vanish.  The map is
+injective.  Since $2\le n\le k-2$, choose an $n$-plane
+\[
+                         F(\mathbb R^2)\subset W\subset S.  \tag{4}
+\]
+
+Let $N_i\in W^*$ be the restriction of the $i$-th coordinate functional and set
+\[
+                         \Omega=\{w\in W:N_i(w)<1\ \forall i\}.
+\]
+The coordinate restrictions span $W^*$.  Moreover, (3) gives
+\[
+             \sum_{i\ \mathrm{even}}N_i=0,
+             \qquad \sum_{i\ \mathrm{odd}}N_i=0.          \tag{5}
+\]
+Thus $\sum_iN_i=0$ with all coefficients positive.  If $y$ were a recession
+direction, every $N_i(y)\le0$; summing and using (5) would force every value to
+vanish, and the spanning property would give $y=0$.  Hence $\Omega$ is bounded.
+
+Every inequality is a genuine facet.  The point $F(v_i)$ satisfies
+\[
+ N_i(F(v_i))=1,
+ \qquad N_j(F(v_i))=\langle v_j,v_i\rangle<1\quad(j\ne i),
+\]
+so it lies in the relative interior of facet $i$.  The first equation in (5)
+minus the second is exactly the alternating relation (1), and
+Proposition~\ref{prop:common-centre-product} gives product $+I_{n+1}$.
+
+The plane $F(\mathbb R^2)$ cuts $\Omega$ in
+\[
+                         \langle v_i,q\rangle<1\quad(0\le i<k),
+\]
+the regular $k$-gon circumscribed about the unit circle.  Every common-centre
+homology preserves the homogeneous span of this plane and restricts to the
+centrally projective reflection in the corresponding side.  The standard
+midpoint orbit therefore visits the $k$ ambient facets in cyclic order.  At each
+impact all competing inequalities are strict, so it is the unique first hit and
+lies in the relative interior of the ambient facet.  The central regular even
+polygon witness has positive return multiplier and exactly one full vector turn.
+The ambient openness criterion now gives a primitive open family, primitivity
+following from the $k$ distinct facets.
+
+Finally, by (2), for $i\ne j$
+\[
+ H_jH_i=\begin{pmatrix}I_n&0\\2(N_j-N_i)&1\end{pmatrix}
+\]
+is a nonidentity unipotent and has infinite order.  An independent sign and
+dimension audit is provided by
+\texttt{verificadores/}\allowbreak\texttt{parity\_lift.py}; the proof above,
+rather than that numerical audit, establishes the result for all parameters.
+\end{proof}
+
+\begin{corollary}[Complete existence table]
+\label{cor:complete-existence-table}
+Under the convention that the period-$k$ witness visits the $k$ distinct facets
+of its polytope, the determinant obstruction is the only obstruction to
+existence:
+\begin{enumerate}
+\item if $n\ge2$ is even, every $k\ge n+1$ occurs;
+\item if $n\ge3$ is odd, exactly the even $k\ge n+1$ occur.
+\end{enumerate}
+Every example can be chosen with a strict primitive witness and hence with an open
+family of periodic trajectories.
+\end{corollary}
+
+\begin{proof}
+Under the stated convention, a bounded $n$-polytope has at least $n+1$ facets,
+so $k\ge n+1$ is necessary.  For every $n\ge2$, the negative-monodromy
+construction gives all periods
+\[
+                         k=n+1+2q,\qquad q\ge0.             \tag{6}
+\]
+If $n$ is even, (6) is every odd $k\ge n+1$, while
+Theorem~\ref{thm:parity-lift} gives every even $k\ge n+2$.  If $n$ is odd, (6)
+is every even $k\ge n+1$, and the determinant parity theorem excludes odd $k$.
+\end{proof}
+
+\section{A metric obstruction for positive monodromy}
+\begin{proposition}[Definite positive monodromy costs twice the rank]
+\label{prop:finite-positive-twice-rank}
+Let a bounded projective polytope in $\mathbb P(V)$, $\dim V=m$, have distinct
+facet homologies whose canonical lifted product is $+I_V$.  If the homologies
+preserve a common positive definite quadratic form, then their number satisfies
+\[
+                              k\ge2m.
+\]
+The same conclusion holds, in particular, if their mirror group is finite.
+Consequently, every positive-monodromy example with $k<2(n+1)$ in projective
+dimension $n$ has infinite mirror group and preserves no positive definite conic.
+\end{proposition}
+
+\begin{proof}
+Use the invariant inner product and write the factors as orthogonal reflections
+$t_i=s_{\alpha_i}$.  Put
+\[
+ w_i=t_i\cdots t_1,\qquad d_i=\operatorname{codim}\operatorname{Fix}(w_i),
+ \qquad S_i=\operatorname{span}(\alpha_1,\ldots,\alpha_i).
+\]
+For an orthogonal map $w$, its moved space
+$\operatorname{Mov}(w)=\operatorname{im}(w-I)$ is
+$\operatorname{Fix}(w)^\perp$.  Multiplication by one reflection changes
+$d=\dim\operatorname{Mov}(w)$ by exactly one.  More precisely,
+\[
+ d_i=d_{i-1}-1
+ \quad\Longleftrightarrow\quad
+ \alpha_i\in\operatorname{Mov}(w_{i-1}).               \tag{1}
+\]
+Indeed, if $\alpha_i\notin\operatorname{Mov}(w_{i-1})$ and
+$t_iw_{i-1}x=x$, then
+$(w_{i-1}-I)x$ is a multiple of $\alpha_i$ lying in the moved space, hence is
+zero; thus
+$\operatorname{Fix}(t_iw_{i-1})=\operatorname{Fix}(w_{i-1})\cap\alpha_i^\perp$
+and $d_i=d_{i-1}+1$.  If $\alpha_i$ belongs to the moved space, then
+$\operatorname{Fix}(w_{i-1})\subset\alpha_i^\perp$ is fixed by $t_iw_{i-1}$;
+the rank-one perturbation and the determinant parity force
+$d_i=d_{i-1}-1$.  This proves (1).
+
+Every preceding reflection fixes $S_{i-1}^\perp$, so
+$\operatorname{Mov}(w_{i-1})\subset S_{i-1}$.  Therefore a decreasing step in
+(1) does not enlarge the span of the roots; only an increasing step can enlarge
+it, and then by at most one.  Since $w_0=w_k=I$, the integer path
+$d_0,d_1,\ldots,d_k$ starts and ends at zero with steps $\pm1$.  It has exactly
+$k/2$ increasing steps.  Consequently
+\[
+                  \dim S_k\le k/2.                     \tag{2}
+\]
+
+The facet covectors span $V^*$: otherwise their common kernel would contain a
+nonzero vector, and the homogeneous cone of the bounded polytope would contain a
+line.  Under the invariant inner product this is equivalent to
+$S_k=V$, so (2) gives $m\le k/2$.
+
+Finally, a finite mirror group preserves a positive definite form obtained by
+averaging any inner product over the group.  Each facet homology is then an
+orthogonal reflection for that form, so the first part applies.
+\end{proof}
+
+\begin{remark}
+Distinctness is required dynamically for primitive period but not in the group
+argument.  Reducibility does not weaken the bound because the root-span argument
+uses the full rank directly.  Degenerate and indefinite invariant forms are not
+covered; the even central polygons used in the positive join preserve a degenerate
+form, exactly as the proposition predicts for their short periods.
+\end{remark}
+
+\section{The metric period spectrum}
+
+Call a configuration \emph{metric} if all facet homologies preserve one positive
+definite quadratic form. Projectively, this is exactly a spherical billiard in a
+bounded affine chart.
+
+\begin{theorem}[The full negative-monodromy metric ray]\label{thm:metric-ray}
+For every vector rank $m\ge3$ and every $q\ge0$, there is a bounded metric
+projective billiard in $\mathbb{RP}^{m-1}$ with a primitive open family of period
+\[
+                              k=m+2q
+\]
+and canonical lifted product $-I_m$.
+\end{theorem}
+
+\begin{proof}
+Start in rank three with the odd cyclic atom of period $p=3+2q$ used in
+Lemma~\ref{lem:odd-cyclic-one-turn}. The displayed form
+$Q=\operatorname{diag}(1,1,\lambda v)$ is positive definite, and that lemma proves
+that the developed witness goes from a lift $x$ to $-x$ in exactly one turn.
+
+Apply Proposition~\ref{prop:rank-one-suspension} $m-3$ times. If the old mirrors
+preserve $Q>0$, their lifts $H_i\oplus1$ and the new base reflection
+$J=I\oplus(-1)$ preserve $Q\oplus[1]>0$. Hence each suspension preserves
+metricity as well as boundedness, strictness, primitivity, one turn and product
+$-I$. The final rank and period are
+\[
+                         3+(m-3)=m,
+       \qquad (3+2q)+(m-3)=m+2q .
+\]
+\end{proof}
+
+Combining Theorem~\ref{thm:metric-ray} with
+Proposition~\ref{prop:finite-positive-twice-rank} gives the current exact table:
+\[
+\begin{array}{c|l}
+\text{range} & \text{metric status}\\ \hline
+k=m & \text{exists and is the orthogonal simplex}\\
+k=m+2q,\ q\ge1 & \text{exists with product }-I_m\\
+\text{$m$ odd, $k$ even, }m<k<2m & \text{impossible}\\
+\text{$m$ odd, $k$ even, }k\ge2m & \text{open}
+\end{array}
+\]
+When $m$ is even, determinants force $k$ even, so the second row supplies every
+allowed period. Metric existence is therefore completely determined in every odd
+projective dimension. In even projective dimension the first unresolved pair is
+$(m,k)=(3,6)$; more generally the unresolved branch is precisely odd $m$,
+positive monodromy and even $k\ge2m$.
+\section{Conclusion}
+Under the stated all-facets convention, the parity lift and negative
+monodromy constructions complete the non-metric period spectrum.  The metric
+part is complete in odd projective dimension, while the only unresolved branch
+is the one identified in the final table.  All finite-dimensional examples used
+in the constructions are accompanied by exact rational certificates.
+\newpage
+\section*{Reproducibility and computational disclosure}
+The general constructions are analytic. Supplementary exact-arithmetic scripts
+check the rational atoms and representative joins, suspensions and parity lifts.
+No floating-point result is used as a premise of a theorem. Research and manuscript development for all three papers used AI assistance from early
+July through late August 2026 (approximate). The models used were OpenAI's GPT-6 Astra,
+GPT-5.6 Sol, and GPT-5.6 Luna, and Anthropic's Fable 5 and Opus 5, accessed through
+ChatGPT Work, ChatGPT Codex, and Claude Code. No API was used. The assistance supported
+research, manuscript drafting, development and checking of verification scripts, and revision.
+Jorge Lucas Gonz\'alez reviewed the manuscripts and assumes full responsibility; no AI
+system is an author.
+\par\medskip
+\noindent\textbf{Competing interests:} The author declares none.
+\par\medskip
+\begin{thebibliography}{99}
+\footnotesize
+\enlargethispage{2\baselineskip}
+\interlinepenalty=10000
+\bibitem{tab} S.~Tabachnikov, \emph{Introducing projective billiards},
+Ergodic Theory Dynam. Systems \textbf{17} (1997), 957--976,
+\href{https://doi.org/10.1017/S0143385797086239}{doi:10.1017/S0143385797086239}.
+\bibitem{fie-ex} C.~Fierobe, \emph{Examples of projective billiards with open
+sets of periodic orbits}, Discrete Contin. Dyn. Syst. \textbf{44} (2024),
+3287--3301, \href{https://doi.org/10.3934/dcds.2024059}{doi:10.3934/dcds.2024059}.
+\bibitem{opb} M.~Bialy, C.~Fierobe, A.~Glutsyuk, M.~Levi, A.~Plakhov and
+S.~Tabachnikov, \emph{Open Problems on Billiards and Geometric Optics},
+Arnold Math. J. \textbf{8}(3--4) (2022), 411--422,
+\href{https://doi.org/10.1007/s40598-022-00198-y}{doi:10.1007/s40598-022-00198-y}.
+\bibitem{fie-caustics} C.~Fierobe, \emph{Only quadrics have pseudo-caustics ---
+on caustics of Riemannian, pseudo-Euclidean and projective billiards in higher
+dimensions}, Math. Z. \textbf{312} (2026), Art. 67,
+\href{https://doi.org/10.1007/s00209-026-03939-3}{doi:10.1007/s00209-026-03939-3};
+\href{https://arxiv.org/abs/2306.06757}{arXiv:2306.06757}.
+\end{thebibliography}
+\end{document}
